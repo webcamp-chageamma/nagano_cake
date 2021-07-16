@@ -29,7 +29,7 @@ Customer.all.each do |customer|
   )
 end
 
-Genre.create(name: "ケーキ")
+Genre.create([{name: "ケーキ"}, {name: "プリン"}, {name: "焼き菓子"}, {name: "キャンディ"}])
 
 4.times do |n|
   Commodity.create(
