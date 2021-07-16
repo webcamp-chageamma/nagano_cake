@@ -1,50 +1,28 @@
 Rails.application.routes.draw do
-  namespace :admin do
-    get 'genres/index'
-    get 'genres/edit'
-  end
-  namespace :admin do
-    get 'commodities/index'
-    get 'commodities/show'
-    get 'commodities/new'
-    get 'commodities/edit'
-  end
-  namespace :admin do
-    get 'customers/index'
-    get 'customers/show'
-    get 'customers/edit'
-  end
-  namespace :admin do
-    get 'orders/index'
-    get 'orders/show'
-  end
-  namespace :public do
-    get 'destinations/index'
-    get 'destinations/edit'
-  end
-  namespace :public do
-    get 'customers/show'
-    get 'customers/edit'
-    get 'customers/withdrawal'
-  end
-  namespace :public do
-    get 'orders/new'
-    get 'orders/thanks'
-    get 'orders/index'
-    get 'orders/show'
-  end
-  namespace :public do
-    get 'cart_items/index'
-  end
-  namespace :public do
-    get 'homes/top'
-    get 'homes/about'
-  end
-  namespace :public do
-    get 'commodities/index'
-    get 'commodities/show'
-  end
+
   devise_for :admins
   devise_for :customers
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  namespace :admin do
+    root to: 'orders#index'
+    resources :orders, only: [:show, :update]
+    resources :genres, only: [:create, :index, :edit, :update]
+    resources :commodities, except: [:destroy]
+    resources :customers, only: [:index, :show, :edit, :update]
+  end
+
+  scope module: :public do
+    root to: 'homes#top'
+    get 'homes/about' => 'homes#about', as: 'about'
+    resources :destinations, only: [:index, :create, :edit, :update, :destroy]
+    resources :customers, only: [:show, :edit, :update]
+    get 'customers/withdrawal' => 'customers#withdrawal', as: 'withdrawal'
+    patch 'customers' => 'customers#hide', as: 'hide'
+    resources :orders, only: [:new, :create, :index,:show]
+    get 'orders/thanks' => 'orders#thanks', as: 'thanks'
+    post 'orders/confirm' => 'orders#confirm', as: 'confirm'
+    resources :cart_items, only: [:index, :create, :update, :destroy]
+    resources :commodities, only: [:index, :show]
+  end
+
 end
