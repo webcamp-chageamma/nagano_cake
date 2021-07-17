@@ -1,5 +1,4 @@
 class ApplicationController < ActionController::Base
-  before_action :authenticate_customer!,except: [:top, :about]
   before_action :authenticate_admin!,except: [:top, :about]
   before_action :configure_permitted_parameters, if: :devise_controller?
 
@@ -8,12 +7,17 @@ class ApplicationController < ActionController::Base
         when Customer
             root_path
         when Admin
-            about_path
-        end
+            root_path
+    end
   end
 
   def after_sign_out_path_for(resource)
-    root_path
+    case resource
+        when Customer
+            root_path
+        when Admin
+            admin_session_path
+    end
   end
 
 

@@ -8,6 +8,11 @@ class Customers::RegistrationsController < Devise::RegistrationsController
   # def new
   #   super
   # end
+  
+  def new
+    redirect_to :root if customer_signed_in?
+    super
+  end
 
   # POST /resource
   # def create

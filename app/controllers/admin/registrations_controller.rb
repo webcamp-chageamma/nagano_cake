@@ -8,6 +8,11 @@ class Admin::RegistrationsController < Devise::RegistrationsController
   # def new
   #   super
   # end
+  
+  def new
+    redirect_to :root if admin_signed_in?
+    super
+  end
 
   # POST /resource
   # def create
