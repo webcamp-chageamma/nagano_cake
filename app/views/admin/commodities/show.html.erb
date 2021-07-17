@@ -1,0 +1,30 @@
+<div class='container'>
+  <h2>商品詳細</h2>
+  <div class='row'>
+    <div class='col-md-5'>
+      <%= attachment_image_tag @commodity, :image, :fill, 400, 300 %>
+    </div>
+    <div class='col-md-6'>
+      <table class='table'>
+        <tr>
+          <td> 商品名 <%= @commodity.name %></td>
+        </tr>
+        <tr>
+          <td> 商品説明 <%= @commodity.opinion %></td>
+        </tr>
+        <tr>
+          <td> ジャンル <%= @commodity.genre_id %></td>
+        </tr>
+        <tr>
+          <td> 販売価格 <%= @commodity.non_taxed_price %> 円 </td>
+        </tr>
+        <tr>
+          <td> 販売ステータス <%= @commodity.sale_status %></td>
+        </tr>
+        <tr>
+          <td><%= link_to '編集する', edit_admin_commodity_path(@commodity.id), class: "btn btn-sm btn-success edit_commodity_#{@commodity.id}" %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
