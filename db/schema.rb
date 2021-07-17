@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 2021_07_15_102836) do
     t.text "opinion"
     t.integer "non_taxed_price"
     t.string "image_id"
-    t.integer "sale_status"
+    t.integer "sale_status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
