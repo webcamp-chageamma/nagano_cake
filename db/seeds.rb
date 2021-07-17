@@ -49,3 +49,8 @@ end
     quantity: 2
   )
 end
+
+Admin.create(
+  email: "admin@test",
+  password: "admin@test"
+)
