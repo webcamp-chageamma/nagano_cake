@@ -7,19 +7,24 @@
     <div class='col-md-6'>
       <table class='table'>
         <tr>
-          <td> 商品名 <%= @commodity.name %></td>
+          <th> 商品名 </th>
+          <td><%= @commodity.name %></td>
         </tr>
         <tr>
-          <td> 商品説明 <%= @commodity.opinion %></td>
+          <td> 商品説明 </td>
+          <td><%= @commodity.opinion %></td>
         </tr>
         <tr>
-          <td> ジャンル <%= @commodity.genre_id %></td>
+          <td> ジャンル </td>
+          <td><%= @commodity.genre_id %></td>
         </tr>
         <tr>
-          <td> 販売価格 <%= @commodity.non_taxed_price %> 円 </td>
+          <td> 販売価格 </td>
+          <td><%= @commodity.non_taxed_price %> 円 </td>
         </tr>
         <tr>
-          <td> 販売ステータス <%= @commodity.sale_status %></td>
+          <td> 販売ステータス </td>
+          <td><%= @commodity.sale_status %></td>
         </tr>
         <tr>
           <td><%= link_to '編集する', edit_admin_commodity_path(@commodity.id), class: "btn btn-sm btn-success edit_commodity_#{@commodity.id}" %></td>
