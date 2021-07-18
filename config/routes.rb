@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   devise_for :admins, controllers: {
-     sessions: 'admin/sessions'
+     sessions: 'admins/sessions'
   }
   
   devise_for :customers, controllers: {
@@ -19,15 +19,16 @@ Rails.application.routes.draw do
 
   scope module: :public do
     root to: 'homes#top'
-    get 'homes/about' => 'homes#about', as: 'about'
+    get '/about' => 'homes#about', as: 'about'
     resources :destinations, only: [:index, :create, :edit, :update, :destroy]
     resources :customers, only: [:show, :edit, :update]
     get 'customers/withdrawal' => 'customers#withdrawal', as: 'withdrawal'
-    patch 'customers' => 'customers#hide', as: 'hide'
+    patch 'customers/hide' => 'customers#hide', as: 'hide'
     resources :orders, only: [:new, :create, :index,:show]
     get 'orders/thanks' => 'orders#thanks', as: 'thanks'
     post 'orders/confirm' => 'orders#confirm', as: 'confirm'
     resources :cart_items, only: [:index, :create, :update, :destroy]
+    delete '/cart_items' => 'cart_items#destroy_all'
     resources :commodities, only: [:index, :show]
   end
 

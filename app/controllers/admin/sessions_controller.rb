@@ -13,11 +13,6 @@ class Admin::SessionsController < Devise::SessionsController
   #   super
   # end
   
-  def new
-    redirect_to :root if admin_signed_in?
-    super
-  end
-
   # DELETE /resource/sign_out
   # def destroy
   #   super
