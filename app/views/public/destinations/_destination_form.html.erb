@@ -1,0 +1,23 @@
+<%= render "layouts/errors", obj: destination %>
+<%= form_with model: destination, local:true do |f| %>
+  <div class="row">
+    <div class="col-3">
+      <ul style=" list-style: none">
+        <li><%= f.label :postal_code, "郵便番号(ハイフンなし)" %></li>
+        <li><%= f.label :place, "住所" %></li>
+        <li><%= f.label :name, "宛名" %></li>
+      </ul>
+    </div>
+    <div class="col-7">
+      <ul class="destination-form", style=" list-style: none">
+        <li><%= f.text_field :postal_code, placeholder: "0000000", style: "width: 15rem;" %></li>
+        <li><%= f.text_field :place, placeholder: "東京都渋谷区代々木神園町0-0", style: "width: 30rem;" %></li>
+        <li><%= f.text_field :name, placeholder: "令和道子", style: "width: 15rem;" %></li>
+      </ul>
+    </div>
+    <div class="col-1 mr-auto">
+      <%= f.submit class: "btn btn-success" %>
+    </div>
+  </div>
+<% end %>
+
