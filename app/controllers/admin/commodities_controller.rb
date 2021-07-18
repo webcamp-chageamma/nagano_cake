@@ -7,9 +7,8 @@ class Admin::CommoditiesController < ApplicationController
   def create
     @commodity = Commodity.new(commodity_params)
     #テストデータ　ジャンルidを指定して保存する
-    @commodity.genre_id = 1
-    if @commodity.save!
-      redirect_to admin_commodities_path
+    if @commodity.save
+      redirect_to admin_commodity_path(@commodity)
     else
      render :new
     end
@@ -18,7 +17,6 @@ class Admin::CommoditiesController < ApplicationController
 
   def index
     @commodities = Commodity.all
-    puts @commodities
   end
 
   def show
@@ -30,9 +28,12 @@ class Admin::CommoditiesController < ApplicationController
   end
 
   def update
-    commodity = Commodity.find(params[:id])
-    commodity.update(commodity_params)
-    redirect_to commodity_path(commodity.id)
+    @commodity = Commodity.find(params[:id])
+    if @commodity.update(commodity_params)
+      redirect_to admin_commodity_path(@commodity)
+    else
+      render "edit"
+    end
   end
 
   private
