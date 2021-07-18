@@ -6,6 +6,10 @@ class Customer < ApplicationRecord
   has_many :cart_items
   has_many :destinations
   
+  def change
+    add_column :customers, :is_deleted, :boolean, default: true, null: false
+  end
+  
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :kana_first_name, presence: true
