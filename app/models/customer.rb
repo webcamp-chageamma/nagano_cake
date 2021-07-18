@@ -5,9 +5,7 @@ class Customer < ApplicationRecord
   has_many :orders
   has_many :cart_items
   has_many :destinations
-  def active_for_authentication?
-    super && (self.is_deleted == false)
-  end
+  
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :kana_first_name, presence: true
