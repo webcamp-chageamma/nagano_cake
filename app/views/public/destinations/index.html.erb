@@ -1,2 +1,35 @@
-<h1>Public::Destinations#index</h1>
-<p>Find me in app/views/public/destinations/index.html.erb</p>
+<div class="container">
+  <h3 class="my-5">配送先登録/一覧</h3>
+  <%= render "destination_form", destination: @destination %>
+
+  <div class="row">
+    <div class="col-10 mr-auto">
+      <% if @destinations.count == 0 %>
+        <p class="m-5"><strong>登録済みの配送先はありません</strong></p>
+      <% else %>
+      <table class="table table-bordered">
+        <tbody>
+          <tr class="table-info">
+            <td scope="col">郵便番号</td>
+            <td scope="col">住所</td>
+            <td scope="col">宛名</td>
+            <td colspan="2"></td>
+          </tr>
+          <% @destinations.each do |d| %>
+          <tr>
+            <td scope="col"><%= d.postal_code %></td>
+            <td scope="col"><%= d.place %></td>
+            <td scope="col"><%= d.name %></td>
+            <td colspan="2">
+              <%= link_to "編集する", edit_destination_path(d.id), class: "btn btn-success" %>
+              <%= link_to "削除する", destination_path(d.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger" %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <% end %>
+    </div>
+  </div>
+
+</div>
