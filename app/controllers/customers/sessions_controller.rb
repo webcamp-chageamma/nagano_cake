@@ -18,19 +18,19 @@ class Customers::SessionsController < Devise::SessionsController
   # def destroy
   #   super
   # end
-  
+
   protected
 
   def reject_customer
     @customer = Customer.find_by(email: params[:customer][:email].downcase)
-    if @customer
-      if @customer.valid_password?(params[:customer][:password]) && @customer.is_deleted?
-        flash[:error] = "退会済みです。"
-        redirect_to new_customer_session_path
-      end
-    else
-      flash[:error] = "必須項目を入力してください。"
-    end
+     if @customer
+       if @customer.valid_password?(params[:customer][:password]) && @customer.is_deleted == "退会"
+         flash[:error] = "退会済みです。"
+         redirect_to new_customer_session_path
+       end
+     else
+       flash[:error] = "必須項目を入力してください。"
+     end
   end
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_in_params
