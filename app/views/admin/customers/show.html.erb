@@ -32,4 +32,9 @@
     <th>会員ステータス</th>
     <th><%= @customer.is_deleted %></th>
   </tr>
+  <tr>
+    <th></th>
+    <th><%= link_to "編集する", edit_admin_customer_path(@customer.id), class:"btn btn-sm btn-success" %></th>
+    <th><%= link_to "注文履歴一覧を見る", admin_root_path, class: "btn btn-primary" %></th>
+  </tr>
 </table>
