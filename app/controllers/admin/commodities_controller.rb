@@ -1,5 +1,7 @@
 class Admin::CommoditiesController < ApplicationController
 
+  before_action :authenticate_admin!
+
   def new
     @commodity = Commodity.new
   end
