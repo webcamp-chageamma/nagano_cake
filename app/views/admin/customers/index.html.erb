@@ -20,8 +20,8 @@
             <th><%= customer.email %></th>
             <th><%= customer.is_deleted %></th>
           </tr>
-          <% end %>
-
+          <% end %> 
         </tbody>
         
       </table>
+      <%= paginate @customers %>
