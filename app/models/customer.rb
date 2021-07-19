@@ -12,6 +12,10 @@ class Customer < ApplicationRecord
     last_name + first_name
   end
   
+  def kana_name
+    kana_last_name + kana_first_name
+  end
+  
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :kana_first_name, presence: true
