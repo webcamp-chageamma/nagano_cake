@@ -16,8 +16,7 @@
     kana_first_name: "タロウ#{n + 1}",
     postal_code: "15000",
     phone_number: "0000000000#{n + 1}",
-    address: "東京都渋谷区神南1丁目19-11 パークウェースクエア24階",
-    is_deleted: "false"
+    address: "東京都渋谷区神南1丁目19-11 パークウェースクエア24階"
   )
 end
 

@@ -5,9 +5,11 @@ class Customer < ApplicationRecord
   has_many :orders
   has_many :cart_items
   has_many :destinations
+  enum is_deleted: { 有効: false, 退会: true }
   
-  def change
-    add_column :customers, :is_deleted, :boolean, default: true, null: false
+  
+  def name
+    last_name + first_name
   end
   
   validates :first_name, presence: true
