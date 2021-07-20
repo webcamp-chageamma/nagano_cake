@@ -8,7 +8,6 @@ class Admin::CommoditiesController < ApplicationController
 
   def create
     @commodity = Commodity.new(commodity_params)
-    #テストデータ　ジャンルidを指定して保存する
     if @commodity.save
       redirect_to admin_commodity_path(@commodity)
     else
@@ -40,7 +39,7 @@ class Admin::CommoditiesController < ApplicationController
 
   private
   def commodity_params
-    params.require(:commodity).permit(:image, :name, :opinion, :non_taxed_price, :sale_status)
+    params.require(:commodity).permit(:image, :name, :opinion, :non_taxed_price, :sale_status ,:genre_id)
   end
 
 end

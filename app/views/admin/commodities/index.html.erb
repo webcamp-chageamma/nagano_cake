@@ -17,8 +17,8 @@
         <td></td>
         <td><%= commodity.id %></td>
         <td><%= link_to commodity.name, admin_commodity_path(commodity.id), class: "commodity_#{commodity.id}" %></td>
-        <td><%= commodity.non_taxed_price %> 円</td>
-        <td><%= commodity.genre_id %></td>
+        <td><%= commodity.non_taxed_price.to_s(:delimited) %> 円</td>
+        <td><%= commodity.genre.name %></td>
         <td><%= commodity.sale_status %></td>
       </tr>
     <% end %>
