@@ -6,16 +6,17 @@
     <div class='col-10'>
       <div class='row'>
         <div class='col-md-5'>
-          <%= attachment_image_tag @commodity, :image, :fill, 300, 225 %>
+          <%= attachment_image_tag @commodity,  :image, format: 'jpeg', size: "224x168" %>
         </div>
         <div class='col-md-7 mt-2'>
           <h3><%= @commodity.name %></h3>
           <h6><%= @commodity.opinion %></h6>
           <br>
-          <h4 class='mt-2'>¥<%= @commodity.add_tax_sales_price.to_s(:dalimited) %>(税込)</h4>
-          <%= form_with model: @commodity do |f| %>
-            <td><%= f.select :name, ['sample1', 'sample2', 'sample3'], {include_blank: '選択ボックス'}, class: 'sample mt-5' %></td>
-            <td><%= f.submit "カートに入れる" , class: 'btn btn-success '%></td>
+          <h4 class='mt-2'>¥<%= @commodity.add_tax_sales_price.to_s(:delimited) %>(税込)</h4>
+          <%= form_with model: @cart_item, url: cart_items_path, local: true do |f| %>
+            <%= f.hidden_field :commodity_id, value: @commodity.id %>
+            <%= f.number_field :quantity, min: 1, max: 100, include_blank: "個数選択"  %>
+            <%= f.submit "カートに入れる", class: "btn btn-success" %>
           <% end %>
         </div>
       </div>

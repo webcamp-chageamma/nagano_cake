@@ -6,7 +6,7 @@ class Commodity < ApplicationRecord
   belongs_to :genre
   attachment :image
   #販売ステータス　（0= 販売中 / 1= 販売停止中）
-  enum sale_status: { good: 0, bad: 1 }
+  enum sale_status: { 販売中: 0, 販売停止: 1 }
 
   validates :image, presence: true
   validates :name, presence: true
