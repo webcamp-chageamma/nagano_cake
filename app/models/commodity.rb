@@ -17,5 +17,9 @@ class Commodity < ApplicationRecord
   def  add_tax_sales_price
     (self.non_taxed_price * 1.10).round
   end
+  
+  def self.search_for(content)
+    Commodity.where(['name LIKE ?', "%#{content}%"])
+  end
 
 end

@@ -21,6 +21,7 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     get '/about' => 'homes#about', as: 'about'
     get 'customers/withdrawal' => 'customers#withdrawal', as: 'withdrawal'
+    get '/search', to: 'searches#search'
     patch 'customers/hide' => 'customers#hide', as: 'hide'
     resources :destinations, only: [:index, :create, :edit, :update, :destroy]
     resources :customers, only: [:show, :edit, :update]
