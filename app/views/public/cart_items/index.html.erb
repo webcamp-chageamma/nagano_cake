@@ -1,19 +1,30 @@
-<div class='container'>
-  <div class='row'>
-    <div class="col-12 mt-5">
-      <h5>ショッピングカート</h5>
-      <h5 class="text-right">
+<div class="container">
+  <div class="row">
+    <div class="col-3 text-center">
+      <h5 class="bg-light mt-4"> ショッピングカート </h5>
+    </div>
+     <div class="col-9">
+      <h5 class="mt-4 text-right">
         <%= link_to "カートを空にする", cart_items_path(@cart_items), method: :delete, "data-confirm" => "本当にカートを空にしてよろしいですか？", class: "btn btn-danger" %>
       </h5>
+    </div>
+  </div>
+
+  <div class="row mt-2">
+    <div class="col-12">
       <table class="table table-bordered">
-        <tbody>
-          <tr class="title">
+
+        <thead class="thead-light">
+          <tr>
             <th>商品名</th>
             <th>単価(税込)</th>
             <th>数量</th>
             <th>小計</th>
             <th></th>
           </tr>
+        </thead>
+
+        <tbody>
           <% @cart_items.each do |e| %>
           <tr>
             <td>
@@ -35,15 +46,28 @@
            <% end %>
         </tbody>
       </table>
-      <div>
-        <%= link_to '買い物を続ける', commodities_path, class: "btn btn-primary" %>
-      </div>
-      <div class="text-right">
-       合計金額 ¥<%= @total.round.to_s(:delimited)%>
-      </div>
-      <div class="text-center">
-        <%= link_to '情報入力に進む', "/orders/new" , class: "btn btn-success" %>
-      </div>
     </div>
   </div>
+
+    <div class="row mt-2">
+      <div class="col-9"></div>
+       <div class="col-3">
+        <table class="table table-bordered">
+          <tbody>
+            <tr>
+              <th class="cart_price"> 合計金額 </th>
+              <th> <%= @total.round.to_s(:delimited)%> </th>
+            </tr>
+          </tbody>
+        </table>
+       </div>
+    </div>
+
+    <div>
+      <%= link_to '買い物を続ける', commodities_path, class: "btn btn-primary" %>
+    </div>
+    <div class="text-center">
+      <%= link_to '情報入力に進む', "/orders/new" , class: "btn btn-success" %>
+    </div>
+
 </div>
