@@ -1,0 +1,21 @@
+<div class='container py-5'>
+  <% if @commodities.empty? %>
+    <h3>Commodities search for "<%= @content %>"</h3>
+    <p>検索結果は０件です</p>
+  <% else %>
+    <h2>Commodities search for "<%= @content %>" (全 <%= @commodities.count %> 件)</h2>
+    <div class='row mt-4'>
+      <% @commodities.each do |commodity| %>
+        <div class='commodity col-md-3'>
+          <div class='commodity-image'>
+            <%= link_to commodity_path(commodity.id) do %>
+             <%= attachment_image_tag commodity, :image, size: '200x150' %>
+            <% end %>
+            <p><%= commodity.name %>
+            <br>￥<%= commodity.non_taxed_price %></p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>
