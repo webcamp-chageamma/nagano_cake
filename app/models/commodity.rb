@@ -21,5 +21,10 @@ class Commodity < ApplicationRecord
   def self.search_for(content)
     Commodity.where(['name LIKE ?', "%#{content}%"])
   end
+  
+  def self.search_genre_for(value)#ここがジャンル検索の部分です。
+    Commodity.where(genre_id: value)
+  end
+  
 
 end

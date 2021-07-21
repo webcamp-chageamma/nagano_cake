@@ -1,9 +1,8 @@
 <div class='container py-5'>
   <% if @commodities.empty? %>
-    <h3>Commodities search for "<%= @content %>"</h3>
     <p>検索結果は０件です</p>
   <% else %>
-    <h2>Commodities search for "<%= @content %>" (全 <%= @commodities.count %> 件)</h2>
+    <h2>Commodities search (全 <%= @commodities.count %> 件)</h2>
     <div class='row mt-4'>
       <% @commodities.each do |commodity| %>
         <div class='commodity col-md-3'>
