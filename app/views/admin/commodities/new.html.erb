@@ -1,36 +1,13 @@
-<center>
-  <P>商品新規登録</P>
-    <%= form_with model: @commodity, url:'/admin/commodities', local:true do |f| %>
-        <div class="form-group">
-          <%= f.label :image, "商品画像" %>
-          <%= f.attachment_field :image %>
-        </div>
-        <div class="form-group">
-          <%= f.label :name, "商品名" %>
-          <%= f.text_field :name %>
-        </div>
-        <div class="form-group">
-          <%= f.label :opinion, "商品説明" %>
-          <%= f.text_area :opinion %>
-        </div>
-        <div class="form-group">
-          <%= f.label :genre_id, "ジャンル" %>
-          <%= f.collection_select :genre_id, Genre.all, :id, :name %>
-        </div>
-        <div class="form-group">
-          <%= f.label :non_taxed_price, "税抜価格" %>
-          <%= f.text_field :non_taxed_price %>円
-        </div>
-        <div class="form-group">
-          <%= f.label :sale_status, "販売ステータス" %>
-          <%= f.radio_button :sale_status, :販売 %>
-          <%= f.label :sale_status_good, '販売中' %>
-          <%= f.radio_button :sale_status, :販売停止 %>
-          <%= f.label :sale_status_bad, '販売停止' %>
-        </div>
-        <div class="form-group">
-          <%= f.submit '新規登録', class: 'btn btn-success' %>
-        </div>
-      </div>
-    <% end %>
-</center>
+<div class="container">
+  <div class="row">
+    <div class="col-3 text-center">
+      <h5 class="bg-light mt-4">商品新規登録</h5>
+    </div>
+  </div>
+  <div class="row mt-3 ">
+    <div class='col-3'></div>
+    <div class='col-6'>
+      <%= render 'form', commodity: @commodity %>
+    </div>
+  </div>
+</div>
