@@ -8,11 +8,9 @@ class Public::CartItemsController < ApplicationController
   end
 
   def create
-    if @cart_item.blank?
-      @cart_item = current_customer.cart_items.new(cart_item_params)
-    end
-
-    @cart_item.customer_id = current_customer.id
+    
+    @cart_item = current_customer.cart_items.new(cart_item_params)
+    
     if cart_item = current_customer.cart_items.find_by(commodity_id: params[:cart_item][:commodity_id])
       cart_item.quantity += params[:cart_item][:quantity].to_i
       cart_item.save
@@ -51,5 +49,5 @@ class Public::CartItemsController < ApplicationController
   def cart_item_params
     params.require(:cart_item).permit(:quantity, :commodity_id)
   end
-  
+
 end

@@ -32,7 +32,13 @@
           </tr>
           <tr>
             <td> 販売ステータス </td>
-            <td class="body"><%= @commodity.sale_status %></td>
+            <td class="body">
+              <% if @commodity.sale_status == "販売中" %>
+                <p class="status_good">販売中</p>
+              <% else %>
+                <p class="status-bad">販売停止中</p>
+              <% end %>
+            </td>
           </tr>
         </tbody>
       </table>
@@ -40,7 +46,7 @@
   </div>
   <div class="row">
     <div class='btn-group mx-auto '>
-      <%= link_to '編集する', edit_admin_commodity_path(@commodity.id), class: "btn btn-success btn-lg edit_commodity_#{@commodity.id}" %>
+      <%= link_to '編集する', edit_admin_commodity_path(@commodity.id), class: "btn btn-success btn-lg edit_commodity_#{@commodity.id}", data: {"turbolinks"=>false} %>
     </div>
   </div>
 </div>
