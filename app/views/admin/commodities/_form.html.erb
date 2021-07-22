@@ -1,6 +1,6 @@
 <table class="table table-borderless">
   <tbody class="title">
-     <%= form_with model: commodity, url:'/admin/commodities', local:true do |f| %>
+     <%= form_with model: commodity, url: path,  local:true do |f| %>
       <tr>
         <td><%= f.label :image, "商品画像" %></td>
         <td><%= f.attachment_field :image %></td>
@@ -15,7 +15,7 @@
       </tr>
       <tr>
         <td><%= f.label :genre_id, "ジャンル" %></td>
-        <td><%= f.collection_select :genre_id, Genre.all, :id, :name, size: "35x20" %></td>
+        <td><%= f.collection_select :genre_id, Genre.all, :id, :name %></td>
       </tr>
       <tr>
         <td><%= f.label :non_taxed_price, "税抜価格" %></td>
@@ -24,10 +24,10 @@
       <tr>
         <td><%= f.label :sale_status, "販売ステータス" %></td>
         <td>
-          <%= f.radio_button :sale_status, :販売 %>
-          <%= f.label :sale_status_good, '販売中' %>
-          <%= f.radio_button :sale_status, :販売停止 %>
-          <%= f.label :sale_status_bad, '販売停止' %>
+          <%= f.radio_button :sale_status, "販売中" %>
+          <%= f.label :sale_status_0, '販売中' %>
+          <%= f.radio_button :sale_status, "販売停止"%>
+          <%= f.label :sale_status_1, '販売停止' %>
         </td>
       </tr>
       <tr>

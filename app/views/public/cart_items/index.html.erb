@@ -16,11 +16,11 @@
 
         <thead class="thead-light">
           <tr>
-            <th>商品名</th>
-            <th>単価(税込)</th>
-            <th>数量</th>
-            <th>小計</th>
-            <th></th>
+            <th class="col-4">商品名</th>
+            <th class="col-2">単価(税込)</th>
+            <th class="col-2">数量</th>
+            <th class="col-2">小計</th>
+            <th class="col-2"></th>
           </tr>
         </thead>
 
@@ -50,17 +50,17 @@
   </div>
 
     <div class="row mt-2">
-      <div class="col-9"></div>
-       <div class="col-3">
+      <div class="col-8"></div>
+       <div class="col-4">
         <table class="table table-bordered">
           <tbody>
             <tr>
-              <th class="cart_price"> 合計金額 </th>
-              <th> <%= @total.round.to_s(:delimited)%> </th>
+              <th class="cart_price col-2"> 合計金額 </th>
+              <th class="col-2"> <%= @total.round.to_s(:delimited)%> </th>
             </tr>
           </tbody>
         </table>
-       </div>
+      </div>
     </div>
 
     <div>
