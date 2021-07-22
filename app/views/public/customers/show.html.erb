@@ -1,41 +1,38 @@
-<h2>マイページ</h2>
-登録情報　<%= link_to "編集する", edit_customer_path, class:"btn btn-sm btn-success" %>
-<table>
-  <tr>
-    <th>会員ID</th>
-    <th><%= @customer.id %></th>
-  </tr>
-  <tr>
-    <th>氏名</th>
-    <th><%= @customer.name %></th>
-  </tr>
-  <tr>
-    <th>フリガナ</th>
-    <th><%= @customer.kana_name %></th>
-  </tr>
-  <tr>
-    <th>郵便番号</th>
-    <th><%= @customer.postal_code %></th>
-  </tr>
-  <tr>
-    <th>住所</th>
-    <th><%= @customer.address %></th>
-  </tr>
-  <tr>
-    <th>電話番号</th>
-    <th><%= @customer.phone_number %></th>
-  </tr>
-  <tr>
-    <th>メールアドレス</th>
-    <th><%= @customer.email %></th>
-  </tr>
-  <tr>
-    <th>会員ステータス</th>
-    <th><%= @customer.is_deleted %></th>
-  </tr>
-  <tr>
-    <th></th>
-    <th>配送先<%= link_to "一覧を見る", destinations_path, class: "btn btn-primary" %></th>
-    <th>注文履歴<%= link_to "一覧を見る", orders_path, class: "btn btn-primary" %></th>
-  </tr>
-</table>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-12">
+      <h2 class="text-center bg-light mb-4">マイページ</h2>
+      <h5 class="touroku">登録情報<%= link_to "編集する", edit_customer_path, class:"btn btn-sm btn-success",style: "margin-left:20px;" %></h5>
+    </div>
+    <div class="col-8 block-center">
+      <table class="table mt-5 table-bordered">
+        <tr>
+          <td class="bg-light">氏名</td>
+          <td><%= @customer.name %></td>
+        </tr>
+        <tr>
+          <td class="bg-light">カナ</td>
+          <td><%= @customer.kana_name %></td>
+        </tr>
+        <tr>
+          <td class="bg-light">郵便番号</td>
+          <td><%= @customer.postal_code %></td>
+        </tr>
+        <tr>
+          <td class="bg-light">住所</td>
+          <td><%= @customer.address %></td>
+        </tr>
+        <tr>
+          <td class="bg-light">電話番号</td>
+          <td><%= @customer.phone_number %></td>
+        </tr>
+        <tr>
+          <td class="bg-light">メールアドレス</td>
+          <td><%= @customer.email %></td>
+        </tr>
+      </table>
+      <h5 class="touroku">配送先<%= link_to "一覧を見る", destinations_path, class: "btn btn-primary",style: "margin-left:40px;" %></h5>
+      <h5 class="touroku">注文履歴<%= link_to "一覧を見る", orders_path, class: "btn btn-primary",style: "margin-left:20px;" %></h5>
+    </div>
+  </div>
+</div>
