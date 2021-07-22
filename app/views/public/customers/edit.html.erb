@@ -5,7 +5,7 @@
     </div>
     <div class="col-9">
       <%= form_with model: @customer, local:true do |f| %>
-        <table class="table">
+        <table class="table table-borderless kou">
           <tr>
             <td>氏名</td>
             <td><%= f.text_field :last_name,style: "margin-right:20px;" %><%= f.text_field :first_name %></td>
@@ -31,9 +31,9 @@
             <td><%= f.email_field :email %></td>
           </tr>
         </table>
-        <table class="table table-borderless mt-5">
+        <table class="table table-borderless mt-5 kou">
           <td></td>
-          <td><%= f.submit "編集内容を保存", class:"btn btn-lg btn-success" %></td>
+          <td><%= f.submit "編集内容を保存", class:"btn btn-lg btn-success",style: "margin-left:130px;" %></td>
           <td><%= link_to "退会する", withdrawal_path, method: :get, class: "btn btn-lg btn-danger" %></td>
         </table>
         <% end %>
