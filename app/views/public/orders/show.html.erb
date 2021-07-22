@@ -1,2 +1,74 @@
-<h1>Public::Orders#show</h1>
-<p>Find me in app/views/public/orders/show.html.erb</p>
+<div class="container pt-3">
+  <h3 class="mb-3">注文確認画面</h3>
+  <div class="row">
+    <div class="col-7">
+      <h5 class="my-3">注文情報</h5>
+      <table class="table table-bordered">
+        <tbody>
+          <tr>
+            <td class="table-info" scope="row">注文日</td>
+            <td scope="col"><%= @order.created_at.strftime('%Y/%m/%d') %></td>
+          </tr>
+          <tr>
+            <td class="table-info" scope="row">配送先</td>
+            <td>
+              <%= "〒#{@order.destination_postal_code}" %><br>
+              <%= @order.destination_address %><br>
+              <%= @order.destination_name %>
+            </td>
+          </tr>
+          <tr>
+            <td class="table-info" scope="row">支払方法</td>
+            <td><%= @order.payment %></td>
+          </tr>
+          <tr>
+            <td class="table-info" scope="row">ステータス</td>
+            <td><%= @order.order_status %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-3">
+      <h5 class="my-3">請求情報</h5>
+      <table class="table table-bordered">
+        <tbody>
+          <tr>
+            <td class="table-info" scope="row">商品合計</td>
+            <td scope="col"><%= @order.sub_total.to_s(:delimited) %></td>
+          </tr>
+          <tr>
+            <td class="table-info" scope="row">配送料</td>
+            <td><%= @order.freight.to_s(:delimited) %></td>
+          </tr>
+          <tr>
+            <td class="table-info" scope="row">ご請求額</td>
+            <td><%= @order.total_due.to_s(:delimited) %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-8">
+      <h5 class="my-3">注文内容</h5>
+      <table class="table table-bordered">
+        <tbody>
+          <tr class="table-info">
+            <td scope="col">商品</td>
+            <td scope="col">単価（税込)</td>
+            <td scope="col">個数</td>
+            <td scope="col">小計</td>
+          </tr>
+          <% @order.order_commodities.each do |order_commodity| %>
+          <tr>
+            <td><%= order_commodity.commodity.name %></td>
+            <td><%= order_commodity.commodity.add_tax_sales_price.to_s(:delimited) %></td>
+            <td><%= order_commodity.quantity %></td>
+            <td><%= order_commodity.price.to_s(:delimited) %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
