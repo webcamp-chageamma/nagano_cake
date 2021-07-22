@@ -26,5 +26,4 @@ class Commodity < ApplicationRecord
     Commodity.where(genre_id: value)
   end
 
-
 end

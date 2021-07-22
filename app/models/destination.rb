@@ -6,4 +6,7 @@ class Destination < ApplicationRecord
   validates :place, presence: true
   validates :name, presence: true
 
+  def order_destination
+    self.postal_code + self.place + self.name
+  end
 end
