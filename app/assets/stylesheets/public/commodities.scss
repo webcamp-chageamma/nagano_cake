@@ -1,3 +1,25 @@
 // Place all the styles related to the public/commodities controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.commodity_name {
+  font-size: 27px;
+  font-family: system-ui;
+  margin-bottom: 5px;
+}
+
+.commodity_opinion {
+  font-size: 20px;
+  font-family: "游明朝体","YuMincho";
+  margin-bottom: 50px;
+}
+
+.commodity_price {
+  font-size: 25px;
+  font-family: "Noto Serif CJK JP";
+  margin-bottom: 30px;
+  .price {
+    font-size: 15px;
+    font-family: "游明朝体","YuMincho";
+  }
+}

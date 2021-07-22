@@ -1,10 +1,10 @@
 <div class="container">
   <div class="row">
     <div class="col-2 text-center">
-      <h5 class="bg-light mt-4">商品一覧</h5>
+      <h5 class="bg-light">商品一覧</h5>
     </div>
-    <div class="col-10 text-center">
-      <h5 class="bg-light mt-4"><%= link_to "＋", new_admin_commodity_path(@commodity), data: {"turbolinks"=>false} %></h5>
+    <div class="col-10 text-right">
+      <%= link_to "+", new_admin_commodity_path(@commodity), class: 'btn-circle-3d', data: {"turbolinks"=>false} %>
     </div>
 
     <!--商品-->

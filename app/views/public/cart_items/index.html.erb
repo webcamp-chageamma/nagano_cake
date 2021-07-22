@@ -1,10 +1,10 @@
 <div class="container">
   <div class="row">
     <div class="col-3 text-center">
-      <h5 class="bg-light mt-4"> ショッピングカート </h5>
+      <h5 class="bg-light"> ショッピングカート </h5>
     </div>
      <div class="col-9">
-      <h5 class="mt-4 text-right">
+      <h5 class="text-right">
         <%= link_to "カートを空にする", cart_items_path(@cart_items), method: :delete, "data-confirm" => "本当にカートを空にしてよろしいですか？", class: "btn btn-danger" %>
       </h5>
     </div>
