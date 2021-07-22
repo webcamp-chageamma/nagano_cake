@@ -17,7 +17,7 @@ class Admin::CommoditiesController < ApplicationController
   end
 
   def index
-    @commodities = Commodity.all
+    @commodities = Commodity.page(params[:page]).per(10)
   end
 
   def show
