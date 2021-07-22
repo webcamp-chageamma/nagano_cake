@@ -30,7 +30,7 @@ end
 
 Genre.create([{name: "ケーキ"}, {name: "プリン"}, {name: "焼き菓子"}, {name: "キャンディ"}])
 
-4.times do |n|
+10.times do |n|
   Commodity.create(
     genre_id: 1,
     name: "ケーキ#{n + 1}",
