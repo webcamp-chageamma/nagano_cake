@@ -1,2 +1,32 @@
-<h1>Admin::Orders#index</h1>
-<p>Find me in app/views/admin/orders/index.html.erb</p>
+<div class="container">
+  <div class="row">
+    <di class="col">
+      <h3>注文履歴一覧</h3>
+      <table class="table table-bordered">
+        <tbody>
+          <tr class="table-info">
+            <td scope="col">購入日時</td>
+            <td scope="col">購入者</td>
+            <td scope="col">注文個数</td>
+            <td scope="col">注文ステータス</td>
+          </tr>
+          <% @orders.each do |order| %>
+          <tr>
+            <td scope="row">
+              <%= link_to admin_order_path(order.id) do %>
+                <%= order.created_at.strftime('%Y/%m/%d %H:%M') %>
+              <% end %>
+            </td>
+            <td><%= order.customer.name %></td>
+            <td><%= order.order_commodities.count %></td>
+            <td><%= order.order_status %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <%= paginate @orders %>
+    </div>
+  </div>
+</div>
+
+
