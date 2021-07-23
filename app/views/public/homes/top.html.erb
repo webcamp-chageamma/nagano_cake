@@ -18,7 +18,7 @@
       <h2 class="new-commodities py-5">新着商品</h2>
       <div class="row">
         <% @commodities.each do |commodity| %>
-          <div class="col-md-3 index">
+          <div class="col-md-3">
             <div class="step-img1">
               <%= link_to commodity_path(commodity.id) do %>
                 <%= attachment_image_tag commodity, :image, size: '200x150', format: 'jpg' %>
