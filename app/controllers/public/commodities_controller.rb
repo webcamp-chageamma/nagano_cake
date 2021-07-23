@@ -1,5 +1,5 @@
 class Public::CommoditiesController < ApplicationController
-s
+
   before_action :correct_commodities, only: [:show]
 
   def index
