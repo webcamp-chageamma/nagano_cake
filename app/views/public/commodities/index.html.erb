@@ -6,22 +6,25 @@
       <h3>商品一覧<span class="body"> (全 <%= @commodities.count %> 件)</span></h3>
       <div class='row mt-4'>
         <% @commodities.each do |commodity| %>
-          <div class="col-md-3">
-            <div class='commodity-image'>
-              <%= link_to commodity_path(commodity.id) do %>
-                <%= attachment_image_tag commodity, :image, size: '200x150', format: 'jpg' %>
-              <% end %>
+          <% if commodity.sale_status == "販売中" %>
+            <div class="col-md-3">
+              <div class='commodity-image'>
+                <%= link_to commodity_path(commodity.id) do %>
+                  <%= attachment_image_tag commodity, :image, size: '200x150', format: 'jpg' %>
+                <% end %>
+              </div>
+              <div class='commodity-name mt-1 mb-1'>
+                <%= commodity.name %>
+              </div>
+              <div class='commodity-price mb-3'>
+                ¥ <%= commodity.non_taxed_price %>
+              </div>
             </div>
-            <div class='commodity-name mt-1 mb-1'>
-              <%= commodity.name %>
-            </div>
-            <div class='commodity-price mb-3'>
-              ¥ <%= commodity.non_taxed_price %>
-            </div>
-          </div>
+          <% end %>
         <% end %>
       </div>
       <%= paginate @commodities %>
     </div>
+
   </div>
 </div>
