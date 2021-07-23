@@ -62,6 +62,9 @@ class Public::OrdersController < ApplicationController
   end
 
   def show
+    if params[:id] === "confirm"
+      return redirect_to  new_order_path
+    end
     @order = Order.find(params[:id])
   end
 
@@ -70,7 +73,7 @@ class Public::OrdersController < ApplicationController
   def order_params
     params.require(:order).permit(:destination_postal_code, :destination_address, :destination_name, :payment, :sub_total, :freight, :total_due)
   end
-  
+
   def new_address_params
     params.permit(:destination_postal_code, :destination_address, :destination_name)
   end

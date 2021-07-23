@@ -1,2 +1,86 @@
-<h1>Admin::Orders#show</h1>
-<p>Find me in app/views/admin/orders/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-10">
+      <h4>注文履歴詳細</h4>
+      <table class="table table-borderless">
+        <tbody>
+          <tr>
+            <td scope="row">購入者</td>
+            <td scope="col"><%= @order.customer.name %></td>
+          </tr>
+          <tr>
+            <td scope="row">注文日</td>
+            <td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
+          </tr>
+          <tr>
+            <td scope="row">配送先</td>
+            <td>
+              <%= @order.order_destination_set %><br>
+              <%= @order.destination_name %>
+            </td>
+          </tr>
+          <tr>
+            <td scope="row">支払方法</td>
+            <td><%= @order.payment %></td>
+          </tr>
+          <tr>
+            <td scope="row">注文ステータス</td>
+            <td><%= @order.order_status %>
+              <%= form_with model: @order, url: admin_order_path, local:true do |f| %>
+                <%= f.select :order_status, options_for_select(Order.order_statuses.keys) %>
+                <%= f.submit "更新", class: "btn btn-sm btn-success" %>
+              <% end %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-9">
+      <table class="table table-bordered">
+        <tbody>
+          <tr class="table-info">
+            <td scope="col">商品名</td>
+            <td scope="col">単価（税込）</td>
+            <td scope="col">数量</td>
+            <td scope="col">小計</td>
+            <td scope="col">製作ステータス</td>
+          </tr>
+          <% @order_commodities.each do |order_commodity| %>
+          <tr>
+            <td><%= order_commodity.commodity.name %></td>
+            <td><%= order_commodity.commodity.add_tax_sales_price.to_s(:delimited) %></td>
+            <td><%= order_commodity.quantity %></td>
+            <td><%= order_commodity.price.to_s(:delimited) %></td>
+            <td><%= order_commodity.commodity_status %>
+                <%= form_with model: order_commodity, url:admin_order_commodity_path(order_commodity.id) ,local:true do |f| %>
+                  <%= f.select :commodity_status, options_for_select(OrderCommodity.commodity_statuses.keys) %>
+                  <%= f.submit "更新", class: "btn btn-sm btn-success" %>
+                <% end %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-3">
+      <table class="table table-borderless">
+        <tbody>
+          <tr>
+            <td scope="row">商品合計</td>
+            <td scope="col"><%= @order.sub_total.to_s(:delimited) %>円</td>
+          </tr>
+          <tr>
+            <td scope="row">送料</td>
+            <td><%= @order.freight.to_s(:delimited) %>円</td>
+          </tr>
+          <tr>
+            <td scope="row">請求額合計</td>
+            <td><%= @order.total_due.to_s(:delimited) %>円</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

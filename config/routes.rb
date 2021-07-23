@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   namespace :admin do
     root to: 'orders#index'
     resources :orders, only: [:show, :update]
+    resources :order_commodities, only: [:update]
     resources :genres, only: [:create, :index, :edit, :update]
     resources :commodities, except: [:destroy]
     resources :customers, only: [:index, :show, :edit, :update]
