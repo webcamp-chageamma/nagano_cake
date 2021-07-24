@@ -5,13 +5,13 @@ class Commodity < ApplicationRecord
   has_many :orders, through: :order_commodities
   belongs_to :genre
   attachment :image
-  
+
   enum sale_status: { 販売中: 0, 販売停止: 1 }
 
   validates :image, presence: true
   validates :name, presence: true
   validates :opinion, presence: true
-  validates :non_taxed_price, presence: true
+  validates :non_taxed_price, presence: true , numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 9_999_999 },format: { with: /\A[0-9]+\z/ }
   validates :sale_status, presence: true
 
   def  add_tax_sales_price

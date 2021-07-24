@@ -9,6 +9,7 @@ class Admin::CommoditiesController < ApplicationController
   def create
     @commodity = Commodity.new(commodity_params)
     if @commodity.save
+      flash[:notice] = "新規登録が完了しました。"
       redirect_to admin_commodity_path(@commodity)
     else
      render :new
@@ -17,7 +18,7 @@ class Admin::CommoditiesController < ApplicationController
   end
 
   def index
-    @commodities = Commodity.page(params[:page]).per(10)
+    @commodities = Commodity.order(created_at: :DESC).page(params[:page]).per(10)
   end
 
   def show
@@ -31,6 +32,7 @@ class Admin::CommoditiesController < ApplicationController
   def update
     @commodity = Commodity.find(params[:id])
     if @commodity.update(commodity_params)
+      flash[:notice] = "商品の更新がしました。"
       redirect_to admin_commodity_path(@commodity)
     else
       render "edit"
