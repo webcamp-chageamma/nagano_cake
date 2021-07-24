@@ -5,6 +5,7 @@ class Public::CommoditiesController < ApplicationController
   def index
     @commodities = Commodity.where(sale_status: 0).page(params[:page]).per(8)
     @genres = Genre.all
+    @commodity_count = Commodity.where(sale_status: 0).count
   end
 
   def show
