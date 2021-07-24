@@ -6,10 +6,10 @@
       <h3>商品一覧<span class="body"> (全 <%= @commodities.count %> 件)</span></h3>
       <div class='row mt-4'>
         <% @commodities.each do |commodity| %>
-          <div class="col-md-3">
+          <div class="col-xs-6 col-sm-4 col-md-3">
             <div class='commodity-image'>
               <%= link_to commodity_path(commodity.id) do %>
-                <%= attachment_image_tag commodity, :image, size: '200x150', format: 'jpg' %>
+                <%= attachment_image_tag commodity, :image, size: '140x105', format: 'jpg' %>
               <% end %>
             </div>
             <div class='commodity-name mt-1 mb-1'>
