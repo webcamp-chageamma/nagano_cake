@@ -3,7 +3,7 @@ class Public::CommoditiesController < ApplicationController
   before_action :correct_commodities, only: [:show]
 
   def index
-    @commodities = Commodity.page(params[:page]).per(8)
+    @commodities = Commodity.where(sale_status: 0).page(params[:page]).per(8)
     @genres = Genre.all
   end
 
