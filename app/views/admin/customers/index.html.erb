@@ -1,10 +1,10 @@
 <div class="container ">
   <div class="row">
-    <div class="col-3 text-center">
+    <div class="col-xs-6 col-sm-4 col-md-4 text-center">
       <h5 class="bg-light mb-4 mt-4">会員一覧</h5>
     </div>
-
-    <table class="table table-hover table-inverse">
+   <div class="table-responsive">
+    <table class="table table-hover table-inverse text-nowrap">
       <thead>
         <tr class="bg-light">
           <td>会員ID</td>
@@ -34,6 +34,7 @@
           <% end %> 
         </tbody>
       </table>
+      </div>
     </div>
     <%= paginate @customers %>
   </div>

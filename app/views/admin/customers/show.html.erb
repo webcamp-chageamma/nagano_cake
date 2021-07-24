@@ -1,10 +1,11 @@
 <div class="container ">
   <div class="row">
-    <div class="col-4 text-center">
+    <div class="col-xs-6 col-sm-4 col-md-4 text-center">
       <h5 class="bg-light mb-4 mt-4"><%= @customer.name %>さんの会員詳細</h5>
     </div>
-    <div class="col-9">
-      <table class="table">
+    <div class="col-xs-6 col-sm-4 col-md-9">
+      <div class="table-responsive">
+      <table class="table text-nowrap">
         <tr>
           <td>会員ID</td>
           <td><%= @customer.id %></td>
@@ -49,6 +50,7 @@
           <td><%= link_to "注文履歴一覧を見る", admin_root_path(customer_id: @customer.id, order_sort: 0), class: "btn btn-lg btn-primary mt-5" %></td>
         </tr>
       </table>
+      </div>
     </div>
   </div>
 </div>

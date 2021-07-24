@@ -1,10 +1,11 @@
 <div class="container mt-5">
   <div class="row">
-    <div class="col-4">
+    <div class="col-xs-6 col-sm-4 col-md-4">
       <h2 class="text-center bg-light mb-4">マイページ</h2>
-      <h5 class="touroku">登録情報<%= link_to "編集する", edit_customer_path, class:"btn btn-sm btn-success",style: "margin-left:20px;" %></h5>
+      <h5 class="touroku">登録情報<%= link_to "編集する", edit_customer_path, class:"btn btn-sm btn-success",style: "margin-left:3vw;" %></h5>
     </div>
-    <div class="col-9">
+    <div class="col-xs-6 col-sm-4 col-md-9">
+      <div class="table-responsive text-nowrap">
       <table class="table mt-5 table-bordered">
         <tr>
           <td class="bg-light">氏名</td>
@@ -31,8 +32,9 @@
           <td><%= @customer.email %></td>
         </tr>
       </table>
-      <h5 class="touroku">配送先<%= link_to "一覧を見る", destinations_path, class: "btn btn-primary",style: "margin-left:40px;" %></h5>
-      <h5 class="touroku">注文履歴<%= link_to "一覧を見る", orders_path, class: "btn btn-primary",style: "margin-left:20px;" %></h5>
+      </div>
+      <h5 class="touroku">配送先<%= link_to "一覧を見る", destinations_path, class: "btn btn-primary",style: "margin-left:3vw;" %></h5>
+      <h5 class="touroku">注文履歴<%= link_to "一覧を見る", orders_path, class: "btn btn-primary",style: "margin-left:2vw;" %></h5>
     </div>
   </div>
 </div>
