@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <!--genre検索部分テンプレート-->
-    <%= render 'layouts/genre_search', genres: @genres %> 
+    <%= render 'layouts/genre_search', genres: @genres %>
     <div class="col-10">
       <div class="mx-auto">
         <div class="main">
@@ -14,7 +14,7 @@
         </div>
       </div>
     <!--新着商品表示-->
-  
+
       <h2 class="new-commodities py-5">新着商品</h2>
       <div class="row">
         <% @commodities.each do |commodity| %>
