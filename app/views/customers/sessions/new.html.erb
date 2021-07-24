@@ -1,36 +1,40 @@
 <div class="container">
   <div class="row">
-      <div class="mx-auto col-11 col-sm-10 col-lg-8 col-xl-6">
+    <div class="col">
+      <div class="mt-5">
+        <h2 class="col-3 bg-light text-center">ログイン</h2>
+      </div>
+      <%= form_with model: @customer, url: customer_session_path, local: true do |f| %>
+      <font color="red"><%= flash[:error] %></font>
         <div class="mt-5">
-          <h2 class="text-center">ログイン</h2>
-        </div>
-      <div class="mt-5">
-        <p class="text-center">会員の方はこちらからログイン</p>
-      </div>
-      <div class="mt-5">
         <div class="row">
-          <div class="col">
-          <%= form_with model: @customer, url: customer_session_path, local: true do |f| %>
-            <%= f.label :メールアドレス,"",style: "width:200px;" %>
-            <%= f.email_field :email, autofocus: true, autocomplete: "email",  size: 40 %>
-            
-            <div class="mt-3">
-              <%= f.label :パスワード,"",style: "width:200px" %>
-              <%= f.password_field :password, autocomplete: "current-password",  size: 40 %>
-            </div>
+          <div class="col ml-5">
+            <%= f.label :メールアドレス,"",style: "width:180px;" %>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", size: 40 %>
+          </div>
+        </div>
 
-            <div class="actions">
-              <div class="mt-5 text-center">
-                <%= f.submit "ログイン", class: "btn btn-primary" %>
-              </div>
+        <div class="row">
+          <div class="mt-3">
+            <div class="col ml-5">
+              <%= f.label :パスワード,"",style: "width:180px;" %>
+              <%= f.password_field :password, autocomplete: "current-password", size: 40 %>
             </div>
-          <% end %>
+          </div>
         </div>
       </div>
-    </div>
-    <p class="text-center mt-5">会員登録がお済みでない方</p>
-    <p class="text-center"><%= link_to "こちら", new_customer_registration_path %>から新規登録を行ってください。</p>
 
+      <div class="row">
+        <div class="col-3"></div>
+        <div class="actions">
+          <div class="mt-5">
+            <%= f.submit "ログイン", class: "btn btn-primary" %>
+          </div>
+        </div>
+      </div>
+      <% end %>
+      <p class="col-3 bg-light mt-5">会員登録がお済みでない方</p>
+    <p class="col-5 text-center"><%= link_to "こちら", new_customer_registration_path %>から新規登録を行ってください。</p>
     </div>
   </div>
 </div>

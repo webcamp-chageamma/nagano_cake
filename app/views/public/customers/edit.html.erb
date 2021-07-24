@@ -1,18 +1,19 @@
-<div class="container ">
+<div class="container mt-5">
   <div class="row">
-    <div class="col-12 text-center mb-5">
-      <h2 class="bg-light mb-4 mt-5">会員情報編集</h2>
+    <div class="col-4">
+      <h2 class="bg-light mb-4 text-center">会員情報編集</h2>
+      <p class="text-center"><font color="red"><%= flash[:error] %></font></p>
     </div>
     <div class="col-9">
       <%= form_with model: @customer, local:true do |f| %>
-        <table class="table table-borderless kou">
+        <table class="table table-borderless mt-5">
           <tr>
             <td>氏名</td>
-            <td><%= f.text_field :last_name,style: "margin-right:20px;" %><%= f.text_field :first_name %></td>
+            <td class="form-inline"><%= f.text_field :last_name,style: "margin-right:20px;" %><%= f.text_field :first_name %></td>
           </tr>
           <tr>
             <td>フリガナ</td>
-            <td><%= f.text_field :kana_last_name,style: "margin-right:20px;" %><%= f.text_field :kana_first_name %></td>
+            <td class="form-inline"><%= f.text_field :kana_last_name,style: "margin-right:20px;" %><%= f.text_field :kana_first_name %></td>
           </tr>
           <tr>
             <td>郵便番号</td>
@@ -28,7 +29,7 @@
           </tr>
           <tr>
             <td>メールアドレス</td>
-            <td><%= f.email_field :email %></td>
+            <td><%= f.email_field :email, size: 50; %></td>
           </tr>
         </table>
         <table class="table table-borderless mt-5 kou">

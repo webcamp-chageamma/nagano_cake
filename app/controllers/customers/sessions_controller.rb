@@ -29,7 +29,7 @@ class Customers::SessionsController < Devise::SessionsController
          redirect_to new_customer_session_path
        end
      else
-       flash[:error] = "必須項目を入力してください。"
+       flash[:error] = "正しい情報を入力してください"
      end
   end
   # If you have extra params to permit, append them to the sanitizer.

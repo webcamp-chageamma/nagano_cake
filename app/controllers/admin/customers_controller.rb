@@ -15,20 +15,15 @@ class Admin::CustomersController < ApplicationController
 
   def update
     @customer = Customer.find(params[:id])
-    @customer.update(customer_params)
-    redirect_to admin_customer_path(@customer.id)
+    if @customer.update(customer_params)
+     flash[:notice] = "会員情報を更新しました"
+     redirect_to admin_customer_path(@customer.id)
+    else
+     flash[:error] = "正しい情報を入力してください"
+     render action: :edit
+    end
   end
 
-  def withdrawal
-    @customer = Customer.find(params[:id])
-  end
-
-  def hide
-    @customer = Customer.find(params[:id])
-    @customer.update(is_deleted: true)
-    reset_session
-    redirect_to root_path
-  end
 
   private
   def customer_params
