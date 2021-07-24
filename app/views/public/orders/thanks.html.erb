@@ -1,1 +1,28 @@
-<p class="text-center h3" style="margin-top: 200px">ご注文ありがとうございました！</p>
+<div class="container">
+  <p class="text-center thanks_font" style="padding-top: 80px ; font-size: 80px; line-height: 1">THANK YOU<br>FOR YOUR ORDER!!</p>
+  <p class="text-center thanks_font" style="font-size: 30px">ご注文ありがとうございました！</p>
+  <p class="text-center thanks_font">
+    ご入金を確認後、順次製作に取り掛かります。<br>
+    ご注文の詳細についてはマイページからご確認いただけます。
+  </p>
+  <div class="text-center">
+    <%= link_to "トップページへ戻る", root_path, class: "btn btn-info" %>
+  </div>
+  <h2 class="new-commodities pt-5 pb-2 mx-auto thanks_font">＼まだまだオススメたくさん／</h2>
+  <div class="row">
+    <% @commodities.each do |commodity| %>
+      <div class="col-xs-6 col-sm-4 col-md-3">
+        <div class="step-img1">
+          <%= link_to commodity_path(commodity.id) do %>
+            <%= attachment_image_tag commodity, :image, size: '140x105', format: 'jpg' %>
+          <% end %>
+        </div>
+        <%= commodity.name %><br>
+        ¥ <%= commodity.non_taxed_price %>
+      </div>
+    <% end %>
+  </div>
+  <div class="text-right my-2">
+    <%= link_to "全ての商品を見る>", commodities_path %>
+  </div>
+</div>
