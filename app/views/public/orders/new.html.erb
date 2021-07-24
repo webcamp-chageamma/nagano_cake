@@ -1,4 +1,4 @@
-<div class="container pt-3">
+<div class="container">
   <h3 class="mb-3">注文情報入力</h3>
   <%= render "layouts/errors", obj: @order %>
 
@@ -8,12 +8,12 @@
     <%= form_with model: @order, url: confirm_path, method: :post, local: true do |f| %>
     <h5><strong>支払方法</strong></h5>
     <div class="row mb-3">
-      <div class="col">
-        <div class="radio-inline ml-3">
+      <div class="col d-xs-inline-flex">
+        <div class="radio-inline mx-3">
           <%= f.radio_button :payment, :クレジットカード, checked: true %>
           <%= f.label :クレジットカード %>
         </div>
-        <div class="radio-inline ml-3">
+        <div class="radio-inline mx-3">
           <%= f.radio_button :payment, :銀行振り込み %>
           <%= f.label :銀行振り込み %>
         </div>
@@ -29,10 +29,10 @@
       </div>
     </div>
     <div class="radio-inline ml-3 mb-3">
-      <%= f.radio_button :destination, :registered_address %>
+      <%= f.radio_button :destination, :registered_address, disabled: @destinations.empty? %>
       <%= f.label :destination_registered_address, "登録先住所から選択", class: "payment_label" %><br>
       <div class="pl-4">
-        <%= f.collection_select :destination_id, @destinations, :id, :order_destination %>
+        <%= f.collection_select :destination_id, @destinations, :id, :order_destination, include_blank: "選択してください" %>
       </div>
     </div>
     <div class="radio-inline ml-3">

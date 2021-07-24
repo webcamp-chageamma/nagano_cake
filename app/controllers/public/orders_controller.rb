@@ -54,10 +54,11 @@ class Public::OrdersController < ApplicationController
   end
 
   def thanks
+    @commodities = Commodity.order(created_at: :DESC).page(params[:page]).per(4)
   end
 
   def index
-    @orders = current_customer.orders.all
+    @orders = current_customer.orders.page(params[:page]).per(8).reverse_order
     @order_commodities = OrderCommodity.where(customer_id: current_customer.id)
   end
 

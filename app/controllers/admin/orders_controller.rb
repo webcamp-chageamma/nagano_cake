@@ -9,7 +9,6 @@ class Admin::OrdersController < ApplicationController
     else
       @orders = Order.page(params[:page]).per(8).reverse_order
     end
-
   end
 
   def show

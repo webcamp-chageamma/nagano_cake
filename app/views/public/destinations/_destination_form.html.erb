@@ -1,7 +1,7 @@
 <%= render "layouts/errors", obj: destination %>
 <%= form_with model: destination, local:true do |f| %>
   <div class="row mb-3">
-    <div class="col-3">
+    <div class="col-2.5">
       <ul style=" list-style: none">
         <li><%= f.label :postal_code, "郵便番号(ハイフンなし)" %></li>
         <li><%= f.label :place, "住所" %></li>
