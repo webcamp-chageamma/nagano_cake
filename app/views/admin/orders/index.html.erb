@@ -1,15 +1,21 @@
 <div class="container">
   <div class="row">
+    <div class="col-xs-6 col-sm-4 col-md-4 text-center">
+      <h5 class="bg-light mb-4">注文履歴一覧</h5>
+    </div>
+  </div>
+  <div class="row">
     <di class="col">
-      <h3>注文履歴一覧</h3>
       <table class="table table-bordered">
-        <tbody>
-          <tr class="table-info">
-            <td scope="col">購入日時</td>
-            <td scope="col">購入者</td>
-            <td scope="col">注文個数</td>
-            <td scope="col">注文ステータス</td>
+        <thead class="thead-light">
+          <tr>
+            <th scope="col">購入日時</th>
+            <th scope="col">購入者</th>
+            <th scope="col">注文個数</th>
+            <th scope="col">注文ステータス</th>
           </tr>
+        </thead>
+        <tbody>
           <% @orders.each do |order| %>
           <tr>
             <td scope="row">

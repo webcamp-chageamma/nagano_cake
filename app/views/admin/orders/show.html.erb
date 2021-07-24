@@ -1,7 +1,11 @@
 <div class="container">
   <div class="row">
+    <div class="col-xs-6 col-sm-4 col-md-4 text-center">
+      <h5 class="bg-light mb-4">注文履歴詳細</h5>
+    </div>
+  </div>
+  <div class="row">
     <div class="col-10">
-      <h4>注文履歴詳細</h4>
       <table class="table table-borderless">
         <tbody>
           <tr>
@@ -25,9 +29,9 @@
           </tr>
           <tr>
             <td scope="row">注文ステータス</td>
-            <td><%= @order.order_status %>
+            <td>
               <%= form_with model: @order, url: admin_order_path, local:true do |f| %>
-                <%= f.select :order_status, options_for_select(Order.order_statuses.keys) %>
+                <%= f.select :order_status, options_for_select(Order.order_statuses.keys, selected: @order.order_status) %>
                 <%= f.submit "更新", class: "btn btn-sm btn-success" %>
               <% end %>
             </td>
@@ -53,9 +57,9 @@
             <td><%= order_commodity.commodity.add_tax_sales_price.to_s(:delimited) %></td>
             <td><%= order_commodity.quantity %></td>
             <td><%= order_commodity.price.to_s(:delimited) %></td>
-            <td><%= order_commodity.commodity_status %>
+            <td>
                 <%= form_with model: order_commodity, url:admin_order_commodity_path(order_commodity.id) ,local:true do |f| %>
-                  <%= f.select :commodity_status, options_for_select(OrderCommodity.commodity_statuses.keys) %>
+                  <%= f.select :commodity_status, options_for_select(OrderCommodity.commodity_statuses.keys, selected: order_commodity.commodity_status) %>
                   <%= f.submit "更新", class: "btn btn-sm btn-success" %>
                 <% end %>
             </td>
