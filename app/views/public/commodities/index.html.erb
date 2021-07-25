@@ -5,7 +5,7 @@
       <h3>商品一覧<span class="body"> (全 <%= @commodity_count %> 件)</span></h3>
       <div class='row mt-4'>
         <% @commodities.each do |commodity| %>
-          <div class="col-md-3 col-sm-4">
+          <div class="col-6 col-md-3">
             <div class='commodity-image'>
               <%= link_to commodity_path(commodity.id) do %>
                 <%= attachment_image_tag commodity, :image, format: 'jpg', class: "img-fluid"  %>
@@ -24,4 +24,9 @@
     </div>
 
   </div>
+  <span id="back">
+    <a href="">
+      <%= image_tag asset_path('arrow.png'), data: {"turbolinks"=>false}, class: "arrow" %>
+    </a>
+  </span>
 </div>

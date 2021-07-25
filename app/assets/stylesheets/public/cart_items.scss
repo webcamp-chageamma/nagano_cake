@@ -6,21 +6,91 @@
   width: 40%;
 }
 
-.number {
-  background-color: #FF4500;
-  color: white;
+.tbl-r03 td:first-child{
+  border-right: none;
+}
+.tbl-r03 td:nth-child(2){
+  border-left: none;
 }
 
 /* タブレット縦置きサイズ（768px）以下の際に適用される設定 */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 767px) {
   .cart_img  {
-    width: 30%;
-  }
-}
-/* スマートフォンサイズ（425px）以下の際に適用される設定 */
-@media screen and (max-width: 425px) {
-  .cart_img  {
-    width: 30%;
+    width: 40%;
   }
 
+  .kai {
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  .tbl-r03 {
+    border: 0;
+    width:100%
+  }
+  .tbl-r03 th{
+    background-color: #bee5eb;
+    display: block;
+    border-right: none;
+  }
+  .tbl-r03 thead {
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+  .tbl-r03 tr {
+    display: block;
+    margin-bottom: .625em;
+    border: 1px solid #bee5eb;
+  }
+  .tbl-r03 td {
+    border-bottom: 1px dotted #bbb;
+    display: block;
+    font-size: 1.2em;
+    text-align: right;
+    position: relative;
+    padding: 1.5em 1em 1.5em 4em;
+    border-right: none;
+  }
+
+  .tbl-r03 td::before {
+    content: attr(data-label);
+    font-weight: bold;
+    position: absolute;
+    left: 10px;
+    color: #000;
+  }
+  .tbl-r03 td:last-child {
+    border-bottom: 0;
+    text-align: center;
+  }
+  .tbl-r03 td:first-child {
+    border-bottom: 0;
+    text-align: center;
+    background-color: #bee5eb;
+    display: block;
+    border-right: none;
+  }
+  .tbl-r03 tbody th {
+    color: #fff;
+    padding: 1em
+  }
+  .tbl-r03 tr:nth-child(even){
+  background-color: #fff;
+  }
+}
+
+#back {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+}
+.arrow{
+  width:      50px;
+  height:     50px;
 }
