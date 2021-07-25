@@ -10,19 +10,21 @@ class Public::CartItemsController < ApplicationController
   def create
     @cart_item = current_customer.cart_items.new(cart_item_params)
 
+    if params[:cart_item][:quantity].empty?
+      flash[:alert] = '値を入力してください。'
+     return redirect_to commodity_path(params[:cart_item][:commodity_id])
+    end
+
     if cart_item = current_customer.cart_items.find_by(commodity_id: params[:cart_item][:commodity_id])
       cart_item.quantity += params[:cart_item][:quantity].to_i
       cart_item.save
-      flash[:notice] = "登録されている商品を追加しました。"
+      flash[:notice] ="登録されている商品を追加しました。"
       redirect_to cart_items_path
-
-    elsif @cart_item.save
+    else @cart_item.save
       flash[:notice] = "新しい商品をカートに入れました。"
       redirect_to cart_items_path
-
-    else
-      render cart_items_path
     end
+
   end
 
   def update

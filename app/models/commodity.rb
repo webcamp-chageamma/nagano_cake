@@ -13,6 +13,8 @@ class Commodity < ApplicationRecord
   validates :opinion, presence: true
   validates :non_taxed_price, presence: true , numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 9_999_999 },format: { with: /\A[0-9]+\z/ }
   validates :sale_status, presence: true
+  validates :quantity, presence: true, numericality:{only_integer:true }
+
 
   def  add_tax_sales_price
     (self.non_taxed_price * 1.10).round

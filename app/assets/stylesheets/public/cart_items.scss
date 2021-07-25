@@ -6,6 +6,11 @@
   width: 40%;
 }
 
+.number {
+  background-color: #FF4500;
+  color: white;
+}
+
 /* タブレット縦置きサイズ（768px）以下の際に適用される設定 */
 @media screen and (max-width: 768px) {
   .cart_img  {

@@ -32,7 +32,7 @@ class Admin::CommoditiesController < ApplicationController
   def update
     @commodity = Commodity.find(params[:id])
     if @commodity.update(commodity_params)
-      flash[:notice] = "商品の更新がしました。"
+      flash[:notice] = "商品を更新しました。"
       redirect_to admin_commodity_path(@commodity)
     else
       render "edit"
