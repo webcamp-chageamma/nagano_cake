@@ -1,3 +1,49 @@
 .thanks_font {
   font-family: 'Bradley Hand','Mv Boli','TsukuARdGothic-Regular','Meiryo UI','ヒラギノ明朝 ProN','Hiragino Mincho ProN',sans-serif;
 }
+
+.vertical-th-info {
+  background-color: #bee5eb;
+  border-color: #86cfda!important;
+}
+
+.thanks-img-box {
+  margin-right: 5px;
+  width: 245px;
+  height : auto;
+
+}
+
+/* タブレット横置きサイズ（1024px）以下の際に適用される設定 */
+@media screen and (max-width:1024px) {
+  .thanks-img-box {
+    width: 210px;
+    height : 158px;
+  }
+}
+
+/* タブレット縦置きサイズ（768px）以下の際に適用される設定 */
+@media screen and (max-width:768px) {
+  .thanks-img-box {
+    width: 280px;
+    height : 210px;
+  }
+}
+
+/* スマートフォンサイズ（425px）以下の際に適用される設定 */
+@media screen and (max-width:425px) {
+  .table-font-size {
+    font-size: 0.8rem;
+    line-height: 1.0;
+  }
+  .recommend-message {
+    font-size: 5vw!important;
+  }
+  .order-alert {
+    font-size: 0.8rem;
+  }
+  .thanks-img-box {
+    width: 280px;
+    height : 210px;
+  }
+}

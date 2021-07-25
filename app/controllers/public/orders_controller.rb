@@ -1,10 +1,11 @@
 class Public::OrdersController < ApplicationController
   before_action :authenticate_customer!
+  before_action :cart_item_any?, only: [:new, :confirm]
+  before_action :destinations_set, only:[:new, :confirm, :create]
 
   def new
     @order = Order.new
     @cart_items = current_customer.cart_items.all
-    @destinations = Destination.where(customer_id: current_customer.id)
   end
 
   def confirm
@@ -19,16 +20,28 @@ class Public::OrdersController < ApplicationController
       @order.destination_address = current_customer.address
       @order.destination_name = current_customer.name
     elsif params[:order] [:destination] == "registered_address"
+      if params[:order][:destination_id].empty?
+        flash.now[:alert] = '入力情報に誤りがありました。最初から入力をしてください。'
+        return render :new
+      end
       d = Destination.find(params[:order][:destination_id])
       @order.destination_postal_code = d.postal_code
       @order.destination_address = d.place
       @order.destination_name = d.name
     elsif params[:order] [:destination] == "new_address"
-      @order.destination_postal_code = params[:order][:destination_postal_code]
-      @order.destination_address = params[:order][:destination_address]
-      @order.destination_name = params[:order][:destination_name]
+      @destination = current_customer.destinations.new
+      @destination.postal_code = params[:order][:postal_code]
+      @destination.place = params[:order][:place]
+      @destination.name = params[:order][:name]
+      if @destination.save
+        @order.destination_postal_code = @destination.postal_code
+        @order.destination_address = @destination.place
+        @order.destination_name = @destination.name
+      else
+        flash.now[:alert] = '入力情報に誤りがありました。最初から入力をしてください。'
+        return render :new
+      end
     else
-      @destinations = Destination.where(customer_id: current_customer.id)
       render :new
     end
   end
@@ -48,7 +61,6 @@ class Public::OrdersController < ApplicationController
       redirect_to thanks_path
     else
       @cart_items = current_customer.cart_items.all
-      @destinations = Destination.where(customer_id: current_customer.id)
       render :new
     end
   end
@@ -77,5 +89,15 @@ class Public::OrdersController < ApplicationController
 
   def new_address_params
     params.permit(:destination_postal_code, :destination_address, :destination_name)
+  end
+
+  def cart_item_any?
+    if current_customer.cart_items.empty?
+      redirect_to cart_items_path
+    end
+  end
+
+  def destinations_set
+    @destinations = Destination.where(customer_id: current_customer.id)
   end
 end
