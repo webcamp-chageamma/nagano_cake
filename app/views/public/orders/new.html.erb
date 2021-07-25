@@ -4,61 +4,57 @@
       <h5 class="bg-light mb-4">注文情報入力</h5>
     </div>
   </div>
-  <%= render "layouts/errors", obj: @order %>
-  <% if @cart_items.count == 0 %>
-    <p class="m-5"><strong>カート内に商品がありません</strong></p>
-  <% else %>
-    <%= form_with model: @order, url: confirm_path, method: :post, local: true do |f| %>
-    <h5><strong>支払方法</strong></h5>
-    <div class="row mb-3">
-      <div class="col d-xs-inline-flex">
-        <div class="radio-inline mx-3">
-          <%= f.radio_button :payment, :クレジットカード, checked: true %>
-          <%= f.label :クレジットカード %>
-        </div>
-        <div class="radio-inline mx-3">
-          <%= f.radio_button :payment, :銀行振り込み %>
-          <%= f.label :銀行振り込み %>
-        </div>
+  <%= form_with model: @order, url: confirm_path, method: :post, local: true do |f| %>
+  <h5><strong>支払方法</strong></h5>
+  <div class="row mb-4 mx-auto">
+    <div class="col">
+      <div class="radio-inline" style="margin-left: 5vw">
+        <%= f.radio_button :payment, :クレジットカード, checked: true %>
+        <%= f.label :クレジットカード %>
+      </div>
+      <div class="radio-inline" style="margin-left: 5vw">
+        <%= f.radio_button :payment, :銀行振り込み %>
+        <%= f.label :銀行振り込み %>
       </div>
     </div>
-    <h5><strong>お届け先</strong></h5>
-    <div class="radio-inline ml-3 mb-3">
-      <%= f.radio_button :destination, :current_address, checked: true %>
-      <%= f.label :destination_current_address, "ご自身の住所", class: "payment_label" %><br>
-      <div class="pl-4">
-        <%= "〒#{current_customer.postal_code} #{current_customer.address}" %><br>
-        <%= current_customer.name %>
+  </div>
+  <span class="ml-2 alert-danger order-alert"><%= flash[:alert] %></span>
+  <h5><strong>お届け先</strong></h5>
+  <div class="radio-inline mb-3" style="margin-left: 5vw">
+    <%= f.radio_button :destination, :current_address, checked: true %>
+    <%= f.label :destination_current_address, "ご自身の住所", class: "payment_label" %><br>
+    <div class="row ml-2 mx-auto">
+      <div class="col-sm-9 col-md-10"><%= "〒#{current_customer.postal_code} #{current_customer.address}" %></div>
+      <div class="col-sm-9 col-md-10"><%= current_customer.name %></div>
+    </div>
+  </div>
+  <div class="radio-inline mb-3" style="margin-left: 5vw">
+    <%= f.radio_button :destination, :registered_address, disabled: @destinations.empty? %>
+    <%= f.label :destination_registered_address, "登録先住所から選択", class: "payment_label" %><br>
+    <div class="row ml-2 mx-auto">
+      <div class="col-sm-9 col-md-10">
+        <%= f.collection_select :destination_id, @destinations, :id, :order_destination, {include_blank: "選択してください"}, {class: 'form-control'}; %>
       </div>
     </div>
-    <div class="radio-inline ml-3 mb-3">
-      <%= f.radio_button :destination, :registered_address, disabled: @destinations.empty? %>
-      <%= f.label :destination_registered_address, "登録先住所から選択", class: "payment_label" %><br>
-      <div class="pl-4">
-        <%= f.collection_select :destination_id, @destinations, :id, :order_destination, include_blank: "選択してください" %>
-      </div>
+  </div>
+  <div class="radio-inline" style="margin-left: 5vw">
+    <%= f.radio_button :destination, :new_address %>
+    <%= f.label :destination_new_address, "新しいお届け先", class: "payment_label" %>
+    <div class="row ml-2 mx-auto">
+      <div class="col-sm-9 col-md-4"><%= f.label :postal_code, "郵便番号(ハイフンなし)" %></div>
+      <div class="col-sm-9 col-md-6"><%= f.text_field :postal_code, placeholder: "0000000", class: "mb-2 form-control" %></div>
     </div>
-    <div class="radio-inline ml-3">
-      <%= f.radio_button :destination, :new_address %>
-      <%= f.label :destination_new_address, "新しいお届け先", class: "payment_label" %>
-      <div class="row mb-3">
-        <div class="col-3">
-          <ul style=" list-style: none">
-            <li><%= f.label :destination_postal_code, "郵便番号(ハイフンなし)" %></li>
-            <li><%= f.label :destination_address, "住所" %></li>
-            <li><%= f.label :destination_name, "宛名" %></li>
-          </ul>
-        </div>
-        <div class="col-6">
-          <ul class="destination-form", style=" list-style: none">
-            <li><%= f.text_field :destination_postal_code, placeholder: "0000000", style: "width: 15rem;" %></li>
-            <li><%= f.text_field :destination_address, placeholder: "東京都渋谷区代々木神園町0-0", style: "width: 30rem;" %></li>
-            <li><%= f.text_field :destination_name, placeholder: "令和道子", style: "width: 15rem;" %></li>
-          </ul>
-        </div>
-      </div>
+    <div class="row ml-2 mx-auto">
+      <div class="col-sm-10 col-md-4"><%= f.label :place, "住所" %></div>
+      <div class="col-sm-10 col-md-6"><%= f.text_field :place, placeholder: "東京都渋谷区代々木神園町0-0", class: "mb-2 form-control" %></div>
     </div>
-      <%= f.submit "確認画面へ進む", class: "btn btn-primary" %>
-    <% end %>
+    <div class="row ml-2 mx-auto">
+      <div class="col-sm-10 col-md-4"><%= f.label :name, "宛名" %></div>
+      <div class="col-sm-10 col-md-6"><%= f.text_field :name, placeholder: "令和道子", class: "mb-2 form-control" %></div>
+    </div>
+  </div>
+  <div class="row mx-auto">
+    <div class="col-sm-9 col-md-12 text-center"><%= f.submit "確認画面へ進む", class: "btn btn-lg btn-primary" %></div>
+  </div>
   <% end %>
 </div>
