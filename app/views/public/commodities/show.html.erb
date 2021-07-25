@@ -5,7 +5,7 @@
     <div class='col-md-5 col-xs-5'>
         <%= attachment_image_tag @commodity,  :image, format: 'jpeg', class: "img-fluid"%>
     </div>
-    <div class='col-md-5 col-xs-5'>
+    <div class='col-md-4 col-xs-5'>
       <div class="commodity_name">
          <%= @commodity.name %>
       </div>
@@ -16,12 +16,14 @@
         ¥<%= @commodity.add_tax_sales_price.to_s(:delimited) %>
         <span class="price"> (税込) </span>
       </div>
-      <span class="number"> <%= flash.now[:alert] %> </span>
-      <%= form_with model: @cart_item, url: cart_items_path, local: true do |f| %>
-        <%= f.hidden_field :commodity_id, value: @commodity.id %>
-        <%= f.number_field :quantity, min: 1, max: 100, include_blank: "個数選択"  %>
-        <%= f.submit "カートに入れる", class: "btn btn-success" %>
-      <% end %>
+      <div class="col-xs-2 number1"><span class="number2"> <%= flash.now[:alert] %> </span></div >
+      <div class="commodity_quantity">
+        <%= form_with model: @cart_item, url: cart_items_path, local: true do |f| %>
+          <%= f.hidden_field :commodity_id, value: @commodity.id %>
+          <%= f.number_field :quantity, min: 1, max: 100, include_blank: "個数選択"  %>
+          <%= f.submit "カートに入れる", class: "btn btn-success" %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
