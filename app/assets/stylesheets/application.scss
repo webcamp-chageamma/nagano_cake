@@ -45,4 +45,23 @@
   margin-bottom: -50px;
 }
 
+.logo {
+  height: 80px;
+  width: 160px;
+}
 
+@media screen and (max-width: 1024px) {
+  .logo {
+   height: 60px;
+   width: 120px;
+  }
+  
+}
+/* タブレット縦置きサイズ（768px）以下の際に適用される設定 */
+@media screen and (max-width: 768px) {
+  .logo {
+   height: 40px;
+   width: 80px;
+  }
+  
+}
