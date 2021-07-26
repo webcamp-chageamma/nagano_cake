@@ -30,16 +30,35 @@ end
 
 Genre.create([{name: "ケーキ"}, {name: "プリン"}, {name: "焼き菓子"}, {name: "キャンディ"}])
 
-10.times do |n|
-  Commodity.create(
-    genre_id: 1,
-    name: "ケーキ#{n + 1}",
-    opinion: "とてもおいしいケーキ#{n + 1}",
-    non_taxed_price: 2500,
-    image: File.open("./app/assets/images/david-holifield-kPxsqUGneXQ-unsplash.jpg"),
-    sale_status: 0
+# Commodity.create(
+#   genre_id: 1,
+#   name: "チョコレートケーキ",
+#   opinion: "香り高いスイートチョコを使用しています。しっとり濃厚で、贅沢なスイーツ。",
+#   non_taxed_price: 2500,
+#   image: File.open("./app/assets/images/david-holifield-kPxsqUGneXQ-unsplash.jpg"),
+#   sale_status: 0
+# )
+[
+  [1, "フルーツショコラ", "たくさんのフルーツとクリームチーズがベストマッチ。", 4000, File.open("./app/assets/images/cake.jpg")],
+  [1, "贅沢チョコケーキ", "香り高いスイートチョコを使用しています。しっとり濃厚で、贅沢なスイーツ。", 4000, File.open("./app/assets/images/david-holifield-kPxsqUGneXQ-unsplash.jpg")],
+  [1, "フルーツタルト", "フルーツ盛りだくさん！おいしさはもちろん、カラフルで可愛いのも魅力的。", 2500, File.open("./app/assets/images/img1.jpg")],
+  [1, "苺とヨーグルトのケーキ", "さっぱりとしているので、一人で全部いけちゃいます。", 4000, File.open("./app/assets/images/IMG_3457.jpg")],
+  [1, "まるごとみかんのロールケーキ", "まるごとみかんをたくさん使用しています。可愛い断面を見てあげて。", 2500, File.open("./app/assets/images/IMG_3459.jpg")],
+  [1, "ショコラロールケーキ", "ふわふわ生地、甘すぎないショコラ。さくらんぼで可愛さ2倍。", 2500, File.open("./app/assets/images/IMG_3460.jpg")],
+  [1, "完熟いちごのロールケーキ", "いちばんおしゃれでかわいいケーキ。女子会や自分へのご褒美におすすめ。", 3000, File.open("./app/assets/images/IMG_3463.jpg")],
+  [3, "焼き菓子アソート", "素材にこだわった焼き菓子を少しずつ。食べ比べは幸せよね。", 3000, File.open("./app/assets/images/IMG_3464.jpg")],
+  [4, "カラフルグミ", "スペイン産の原色系グミ。歯ごたえがあって、食べ出したら止まらない。", 800, File.open("./app/assets/images/photo-1499195333224-3ce974eecb47.jpeg")],
+  [4, "なつかしドロップス", "懐かしい味の飴。私はハッカが好き。", 800, File.open("./app/assets/images/photo-1588756264692-d396bca41fb1.jpeg")],
+  [2, "マハカラのうれしいプリン", "たまごにこだわった濃厚プリンとほろ苦カラメルが相性ばつぐん。6個セット", 2600, File.open("./app/assets/images/photo-1592981749207-bdbb9b981cb5.jpeg")],
+  [4, "ハッピーグミ", "ちょっと似てるけど違うよ！！周りのパウダーはすっぱめ。80g×4袋", 800, File.open("./app/assets/images/photo-1617627191898-1408bf607b4d.jpeg")],
+  [2, "チョコレートぷりん", "ほろ苦い大人のお味。休日に一人でこっそり食べたい。6個セット", 2800, File.open("./app/assets/images/photo-1620406348453-a6966a6c1833.jpeg")],
+  [2, "マンゴープリン", "完熟マンゴーがとろけるしあわせぷりん。6個セット", 2800, File.open("./app/assets/images/photo-1620878439728-a8f735a95e3f.jpeg")]
+].each do |genre_id, name, opinion, non_taxed_price, img|
+  Commodity.create!(
+    { genre_id: genre_id, name: name, opinion: opinion, non_taxed_price: non_taxed_price, image: img}
   )
 end
+
 
 2.times do |n|
   CartItem.create(
