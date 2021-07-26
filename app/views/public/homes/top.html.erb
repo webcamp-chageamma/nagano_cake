@@ -2,7 +2,7 @@
   <div class="row">
     <!--genre検索部分テンプレート-->
     <%= render 'layouts/genre_search', genres: @genres %>
-    <div class="col-10">
+    <div class="col-md-10">
       <div class="mx-auto">
         <div class="main">
           <p class="main-visual-text">
@@ -18,7 +18,7 @@
       <h2 class="new-commodities py-5">新着商品</h2>
       <div class="row">
         <% @commodities.each do |commodity| %>
-          <div class="col-xs-6 col-sm-4 col-md-3">
+          <div class="col-sm-4 col-md-3">
             <div class="step-img1">
               <%= link_to commodity_path(commodity.id) do %>
                 <%= attachment_image_tag commodity, :image, format: 'jpg', class: "img-fluid" %>
