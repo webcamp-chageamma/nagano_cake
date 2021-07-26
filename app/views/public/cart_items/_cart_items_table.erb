@@ -1,0 +1,46 @@
+<div class="col-md-12 mb-1">
+  <div class="text-right">
+    <%= link_to "カートを空にする", cart_items_path(cart_items), method: :delete, remote: true, "data-confirm" => "本当にカートを空にしてよろしいですか？", class: "btn btn-danger btn-sm" %>
+  </div>
+</div>
+
+<div class="col-md-12">
+  <div class="table-responsive">
+    <table class="table table-bordered text-nowrap tbl-r03">
+
+      <thead class="table-info">
+        <tr>
+          <th colspan="2", class="col-md-4" >商品名</th>
+          <th class="col-md-2">単価(税込)</th>
+          <th class="col-md-2">数量</th>
+          <th class="col-md-2">小計</th>
+          <th class="col-md-2"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% cart_items.each do |e| %>
+          <tr>
+            <td class="col-md-1">
+              <%= attachment_image_tag e.commodity, :image, format: 'jpeg', size: '80x52', class: "img-fluid cart_img" %>
+            </td>
+            <td data-label="商品名",class="col-md-3">
+              <%= e.commodity.name %>
+            </td>
+            <td data-label="単価(税込)"><%= e.commodity.add_tax_sales_price.to_s(:delimited) %></td>
+            <td data-label="数量">
+             <%= form_with model: e, url: cart_item_path(e), remote: true do |f| %>
+                <%= f.number_field :quantity, min: 1, max: 100 %>
+                <%= f.submit "変更", class: "btn btn-success btn-sm" %>
+              <% end %>
+            </td>
+            <td data-label="小計"><%= e.sum_of_price.to_s(:delimited) %></td>
+            <td>
+              <%= link_to "削除する", cart_item_path(e), method: :delete, remote: true, "data-confirm" => "本当に削除してよろしいですか？", class: "btn btn-danger btn-sm"  %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
