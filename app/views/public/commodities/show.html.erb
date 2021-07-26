@@ -1,11 +1,10 @@
 <div class='container'>
   <div class='row'>
     <%= render 'layouts/errors', obj: @commodity %>
-    <%= render 'layouts/genre_search', genres: @genres %>
-    <div class='col-md-5 col-xs-5'>
+    <div class='col-md-5 order-md-2'>
         <%= attachment_image_tag @commodity,  :image, format: 'jpeg', class: "img-fluid"%>
     </div>
-    <div class='col-md-4 col-xs-5'>
+    <div class='col-md-4 order-md-3 mb-5'>
       <div class="commodity_name">
          <%= @commodity.name %>
       </div>
@@ -24,6 +23,9 @@
           <%= f.submit "カートに入れる", class: "btn btn-success" %>
         <% end %>
       </div>
+    </div>
+    <div class="col-md-2 order-md-1">
+      <%= render 'layouts/genre_search', genres: @genres %>
     </div>
   </div>
 </div>

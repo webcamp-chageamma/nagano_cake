@@ -18,10 +18,10 @@ class Public::CartItemsController < ApplicationController
     if cart_item = current_customer.cart_items.find_by(commodity_id: params[:cart_item][:commodity_id])
       cart_item.quantity += params[:cart_item][:quantity].to_i
       cart_item.save
-      flash[:notice] ="登録されている商品を追加しました。"
+      flash[:alert] ="登録されている商品を追加しました。"
       redirect_to cart_items_path
     else @cart_item.save
-      flash[:notice] = "新しい商品をカートに入れました。"
+      flash[:alert] = "新しい商品をカートに入れました。"
       redirect_to cart_items_path
     end
 
