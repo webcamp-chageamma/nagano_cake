@@ -28,6 +28,10 @@
   .thanks-img-box {
     width: 210px;
   }
+  .order-index-btn {
+    font-size: 0.6rem!important;
+    padding: 0.3rem!important;
+  }
 }
 
 /* タブレット縦置きサイズ（768px）以下の際に適用される設定 */
@@ -35,7 +39,7 @@
   .thanks-img-box {
     width: 280px;
   }
-
+  
   .tbl-r04 {
     border: 0;
     width:100%
@@ -69,7 +73,6 @@
     padding: 1.5em 1em 1.5em 4em;
     border-right: none;
   }
-
   .tbl-r04 td::before {
     content: attr(data-label);
     font-weight: bold;
@@ -94,9 +97,18 @@
   .tbl-r04 tr:nth-child(even){
     background-color: #fff;
   }
-
+  
   .recommend-message {
     text-align: center;
+  }
+  
+  .index-table-wrap {
+    overflow-x: scroll;
+  }
+  .index-table {
+    width: 100%;
+    border-collapse: collapse;
+    white-space: nowrap;
   }
 }
 

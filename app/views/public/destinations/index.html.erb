@@ -10,29 +10,31 @@
       <% if @destinations.count == 0 %>
         <p class="m-5"><strong>登録済みの配送先はありません</strong></p>
       <% else %>
-      <table class="table table-bordered d-table-font-size">
-        <thead>
-          <tr class="thead-light">
-            <th scope="col">郵便番号</th>
-            <th scope="col">住所</th>
-            <th scope="col">宛名</th>
-            <th colspan="2"></th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @destinations.each do |d| %>
-          <tr>
-            <td scope="row"><%= d.postal_code %></td>
-            <td><%= d.place %></td>
-            <td><%= d.name %></td>
-            <td colspan="2" class="d-flex">
-              <div class="flex-fill"><%= link_to "編集", edit_destination_path(d.id), class: "btn btn-sm btn-success p-1" %></div>
-              <div class="flex-fill"><%= link_to "削除", destination_path(d.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-sm btn-danger p-1"%></div>
-            </td>
-          </tr>
-          <% end %>
-        </tbody>
-      </table>
+      <div class="index-table-wrap">
+        <table class="table table-bordered d-table-font-size index-table">
+          <thead>
+            <tr class="thead-light">
+              <th scope="col">郵便番号</th>
+              <th scope="col">住所</th>
+              <th scope="col">宛名</th>
+              <th colspan="2"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @destinations.each do |d| %>
+            <tr>
+              <td scope="row"><%= d.postal_code %></td>
+              <td><%= d.place %></td>
+              <td><%= d.name %></td>
+              <td colspan="2" class="d-flex">
+                <div class="flex-fill"><%= link_to "編集", edit_destination_path(d.id), class: "btn btn-sm btn-success p-1" %></div>
+                <div class="flex-fill"><%= link_to "削除", destination_path(d.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-sm btn-danger p-1"%></div>
+              </td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
       <% end %>
     </div>
   </div>
