@@ -42,8 +42,9 @@ class Public::CartItemsController < ApplicationController
   def destroy_all
     @cart_items = current_customer.cart_items.all
     @cart_items.destroy_all
-    @cart_item = current_customer.cart_items.new(cart_item_params)
+    @cart_item = CartItem.new
   end
+
 
   private
   def cart_item_params
