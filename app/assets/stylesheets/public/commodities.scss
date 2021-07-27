@@ -41,7 +41,6 @@
 
 
 @media screen and (max-width: 724px) {
-
   .commodity_name {
    margin: .2em 1em .2em;
   }
@@ -50,4 +49,8 @@
     margin: 0 1em .2em;
   }
 
+  .commodities {
+    font-size: 35px;
+    text-align: center;
+  }
 }
