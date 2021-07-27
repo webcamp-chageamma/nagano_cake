@@ -63,5 +63,25 @@
    height: 40px;
    width: 80px;
   }
-  
+}
+
+@media screen and (max-width: 480px) { 
+ .logo {
+   height: 35px;
+   width: 70px;
+ }
+ 
+ .login-name {
+  font-size: 0.7em;
+ }
+}
+
+@media screen and (max-width: 320px) {
+ .logo {
+   height: 30px;
+   width: 60px;
+ }
+ .login-name {
+  font-size: 0.6em;
+ }
 }

@@ -1,10 +1,10 @@
 <header>
   <nav class=" header navbar navbar-expand-lg navbar-dark">
-    <a class="navbar-brand" href="/" style="margin-left: 10vw;"><%= image_tag 'logo.png', class: "logo" %></a>
+    <a class="navbar-brand" href="/" ><%= image_tag 'logo.png', class: "logo" %></a>
     
     <!--ログインユーザー名を表示する-->
       <% if customer_signed_in?  %>
-        <div class="text-light" style="margin-left: 10vw;">ようこそ、<%= current_customer.last_name %>さん！</div>
+        <div class="text-light login-name" style="margin-left: 10vw;">ようこそ、<%= current_customer.last_name %>さん！</div>
       <% end %>
     
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
