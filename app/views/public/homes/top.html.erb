@@ -1,7 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-10 col order-md-2">
-
+    <div class="col-md-10 order-md-2">
       <div class="mx-auto">
         <div class="main">
           <p class="main-visual-text">
@@ -12,12 +11,12 @@
           </p>
         </div>
       </div>
+    <!--新着商品表示-->
 
-      <!--新着商品表示-->
       <h2 class="new-commodities py-5">新着商品</h2>
       <div class="row">
         <% @commodities.each do |commodity| %>
-          <div class="col-6 col-md-3">
+          <div class="col-sm-4 col-md-3">
             <div class="step-img1">
               <%= link_to commodity_path(commodity.id) do %>
                 <%= attachment_image_tag commodity, :image, format: 'jpg', class: "img-fluid" %>
@@ -28,16 +27,17 @@
           </div>
         <% end %>
       </div>
-
       <div class="text-right">
-        <div class="text-right mb-5">
-          <%= link_to "全ての商品を見る>", commodities_path %>
-        </div>
+        <%= link_to "全ての商品を見る>", commodities_path %>
       </div>
     </div>
-    <!--genre検索部分テンプレート-->
     <div class="col-md-2 order-md-1">
       <%= render 'layouts/genre_search', genres: @genres %>
     </div>
+    <span id="back">
+      <a href="">
+        <%= image_tag asset_path('arrow.png'), data: {"turbolinks"=>false}, class: "arrow" %>
+      </a>
+    </span>
   </div>
 </div>
