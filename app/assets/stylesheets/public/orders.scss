@@ -10,15 +10,23 @@
 .thanks-img-box {
   margin-right: 5px;
   width: 245px;
-  height : auto;
+}
 
+.tbl-r04 td:first-child{
+  border-right: none;
+}
+.tbl-r04 td:nth-child(2){
+  border-left: none;
+}
+
+.gray-line {
+  background: linear-gradient(transparent 60%, #dcf1f9 0%);
 }
 
 /* タブレット横置きサイズ（1024px）以下の際に適用される設定 */
 @media screen and (max-width:1024px) {
   .thanks-img-box {
     width: 210px;
-    height : 158px;
   }
 }
 
@@ -26,7 +34,69 @@
 @media screen and (max-width:768px) {
   .thanks-img-box {
     width: 280px;
-    height : 210px;
+  }
+
+  .tbl-r04 {
+    border: 0;
+    width:100%
+  }
+  .tbl-r04 th{
+    background-color: #bee5eb;
+    display: block;
+    border-right: none;
+  }
+  .tbl-r04 thead {
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+  .tbl-r04 tr {
+    display: block;
+    margin-bottom: .625em;
+    border: 1px solid #bee5eb;
+  }
+  .tbl-r04 td {
+    border-bottom: 1px dotted #bbb;
+    display: block;
+    font-size: 1.2em;
+    text-align: right;
+    position: relative;
+    padding: 1.5em 1em 1.5em 4em;
+    border-right: none;
+  }
+
+  .tbl-r04 td::before {
+    content: attr(data-label);
+    font-weight: bold;
+    position: absolute;
+    left: 10px;
+    color: #000;
+  }
+  .tbl-r04 td:last-child {
+    border-bottom: 0;
+  }
+  .tbl-r04 td:first-child {
+    border-bottom: 0;
+    text-align: center;
+    background-color: #bee5eb;
+    display: block;
+    border-right: none;
+  }
+  .tbl-r04 tbody th {
+    color: #fff;
+    padding: 1em
+  }
+  .tbl-r04 tr:nth-child(even){
+    background-color: #fff;
+  }
+
+  .recommend-message {
+    text-align: center;
   }
 }
 
@@ -36,6 +106,12 @@
     font-size: 0.8rem;
     line-height: 1.0;
   }
+
+  .table-font-size th,
+  .table-font-size td {
+    padding : 0.3rem;
+  }
+
   .recommend-message {
     font-size: 5vw!important;
   }
@@ -44,6 +120,5 @@
   }
   .thanks-img-box {
     width: 280px;
-    height : 210px;
   }
 }

@@ -5,32 +5,32 @@
     </div>
   </div>
   <div class="row mx-auto">
-    <div class="col-xs-10 col-md-8">
-      <table class="table table-bordered table-font-size">
-        <thead>
-          <tr class="table-info">
-            <th scope="col">商品名</th>
-            <th scope="col">単価</th>
-            <th scope="col">数量</th>
-            <th scope="col">小計</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @cart_items.each do |cart_item| %>
-          <tr>
-            <td>
-              <%= attachment_image_tag cart_item.commodity, :image, format: 'jpeg', size: "70x52" %>
-              <%= cart_item.commodity.name %>
-            </td>
-            <td><%= cart_item.commodity.add_tax_sales_price.to_s(:delimited) %></td>
-            <td><%= cart_item.quantity %></td>
-            <td><%= cart_item.sum_of_price.to_s(:delimited) %></td>
-          </tr>
-          <% end %>
-        </tbody>
-      </table>
+    <div class="col-xs-11 col-md-8">
+      <div class="table-responsive">
+        <table class="table table-bordered tbl-r04">
+          <thead>
+            <tr class="table-info">
+              <th colspan="2", scope="col">商品名</th>
+              <th scope="col">単価</th>
+              <th scope="col">数量</th>
+              <th scope="col">小計</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @cart_items.each do |cart_item| %>
+            <tr>
+              <td><%= attachment_image_tag cart_item.commodity, :image, format: 'jpeg', size: "70x52" %></td>
+              <td data-label="商品名"><%= cart_item.commodity.name %></td>
+              <td data-label="単価"><%= cart_item.commodity.add_tax_sales_price.to_s(:delimited) %></td>
+              <td data-label="数量"><%= cart_item.quantity %></td>
+              <td data-label="小計" class="text-change"><%= cart_item.sum_of_price.to_s(:delimited) %></td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
     </div>
-    <div class="col-md-4 col-lg-3 ml-auto">
+    <div class="col-7 col-md-4 col-lg-3 ml-auto">
       <table class="table table-bordered table-font-size ">
         <tbody>
           <tr>
@@ -50,14 +50,14 @@
     </div>
   </div>
   <div class="row mx-auto my-3">
-    <div class="col-sm-9 col-md-2"><h5>支払方法</h5></div>
-    <div class="col-sm-9 col-md-6"><%= @order.payment %></div>
+    <div class="col-sm-12 col-md-2"><h5>支払方法</h5></div>
+    <div class="col-sm-12 col-md-10"><span class="gray-line"><%= @order.payment %></span></div>
   </div>
   <div class="row mx-auto my-3">
-    <div class="col-sm-9 col-md-2"><h5>お届け先</h5></div>
-    <div class="col-sm-9 col-md-6">
-      〒<%= @order.order_destination_set %><br>
-      <%= @order.destination_name %>
+    <div class="col-sm-12 col-md-2"><h5>お届け先</h5></div>
+    <div class="col-sm-12 col-md-10">
+      <span class="gray-line">〒<%= @order.order_destination_set %></span><br>
+      <span class="gray-line"><%= @order.destination_name %></span>
     </div>
   </div>
   <div class="row">
@@ -70,7 +70,7 @@
         <%= f.hidden_field :sub_total, :value => @total %>
         <%= f.hidden_field :freight, :value => now_freight %>
         <%= f.hidden_field :total_due, :value => @total.round.to_i + now_freight.to_i %>
-      　<div class="text-center"><%= f.submit "注文を確定する", class: "btn btn-primary" %></div>
+      　<div class="text-center mb-3"><%= f.submit "注文を確定する", class: "btn btn-primary" %></div>
       <% end %>
     </div>
   </div>
