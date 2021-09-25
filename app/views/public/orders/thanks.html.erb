@@ -1,2 +1,29 @@
-<h1>Public::Orders#thanks</h1>
-<p>Find me in app/views/public/orders/thanks.html.erb</p>
+<div class="container">
+  <p class="text-center thanks_font" style="padding-top: 80px ; font-size: 8vw; line-height: 1">THANK YOU<br>FOR YOUR ORDER!!</p>
+  <p class="text-center thanks_font" style="font-size: 4vw">ご注文ありがとうございました！</p>
+  <p class="text-center thanks_font">
+    ご入金を確認後、順次製作に取り掛かります。<br>
+    ご注文の詳細についてはマイページからご確認いただけます。
+  </p>
+  <div class="text-center mt-4">
+    <%= link_to "トップページへ戻る", root_path, class: "btn btn-info" %>
+  </div>
+  <p class="recommend-message pt-5 pb-2 thanks_font" style="font-size: 3vw">＼まだまだオススメたくさん／</p>
+  <div class="row mx-auto">
+    <div class="d-flex flex-wrap justify-content-around" style="margin: 0 3vw">
+    <% @commodities.each do |commodity| %>
+      <div class="thanks-img-box">
+        <%= link_to commodity_path(commodity.id) do %>
+          <%= attachment_image_tag commodity, :image, format: 'jpg', class: "img-thumbnail" %>
+        <% end %><br>
+        <%= commodity.name %>
+      </div>
+    <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="text-right m-3 ml-auto">
+      <%= link_to "全ての商品を見る>", commodities_path %>
+    </div>
+  </div>
+</div>

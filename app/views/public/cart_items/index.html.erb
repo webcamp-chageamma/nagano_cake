@@ -1,2 +1,38 @@
-<h1>Public::CartItems#index</h1>
-<p>Find me in app/views/public/cart_items/index.html.erb</p>
+<div class="container">
+
+  <div class="row">
+    <div class="col-md-4 text-center">
+      <h5 class="bg-light"> ショッピングカート </h5>
+    </div>
+  </div>
+
+  <div id="item_table" class="row">
+    <%= render partial: "cart_items_table", locals: { cart_items: @cart_items, cart_item: @cart_item } %>
+  </div>
+
+  <div class="row mt-2">
+    <div class="col-md-8"></div>
+     <div class="col-md-4">
+      <table class="table table-bordered">
+        <tbody>
+          <tr>
+            <th class="table-info col-3"> 合計金額 </th>
+            <th class="col-2"> <%= @total.round.to_s(:delimited)%> </th>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="row mt-2">
+    <div class="col">
+      <div class="kai">
+        <%= link_to '買い物を続ける', "/", class: "btn btn-primary" %>
+      </div>
+      <div class="text-center">
+        <%= link_to '情報入力に進む', "/orders/new" , class: "btn btn-success" %>
+      </div>
+    </div>
+  </div>
+
+</div>

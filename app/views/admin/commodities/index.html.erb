@@ -1,2 +1,45 @@
-<h1>Admin::Commodities#index</h1>
-<p>Find me in app/views/admin/commodities/index.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-2 text-center">
+      <h5 class="bg-light">商品一覧</h5>
+    </div>
+    <div class="col-10 text-right">
+      <%= link_to "+", new_admin_commodity_path(@commodity), class: 'btn-circle-3d', data: {"turbolinks"=>false} %>
+    </div>
+
+    <!--商品-->
+    <div class="col-12">
+      <table class="table table-inverse">
+        <thead class="thead-light">
+          <tr>
+            <th>商品ID</th>
+            <th>商品名</th>
+            <th>税抜き価格</th>
+            <th>ジャンル</th>
+            <th>ステータス</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @commodities.each do |commodity| %>
+          <tr>
+            <td><%= commodity.id %></td>
+            <td><%= link_to commodity.name, admin_commodity_path(commodity.id), class: "commodity_#{commodity.id}" %></td>
+            <td><%= commodity.non_taxed_price %> 円</td>
+            <td><%= commodity.genre.name %></td>
+            <td>
+              <% if commodity.sale_status == "販売中" %>
+                <p class="status_good">販売中</p>
+              <% else %>
+                <p class="status-bad">販売停止中</p>
+              <% end %>
+            </td>
+          </tr>
+          <% end %>
+
+        </tbody>
+      </table>
+      <%= paginate @commodities %>
+    </div>
+  </div>
+</div>

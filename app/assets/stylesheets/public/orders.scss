@@ -1,3 +1,136 @@
-// Place all the styles related to the public/orders controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.thanks_font {
+  font-family: 'Bradley Hand','Mv Boli','TsukuARdGothic-Regular','Meiryo UI','ヒラギノ明朝 ProN','Hiragino Mincho ProN',sans-serif;
+}
+
+.vertical-th-info {
+  background-color: #bee5eb;
+  border-color: #86cfda!important;
+}
+
+.thanks-img-box {
+  margin-right: 5px;
+  width: 245px;
+}
+
+.tbl-r04 td:first-child{
+  border-right: none;
+}
+.tbl-r04 td:nth-child(2){
+  border-left: none;
+}
+
+.gray-line {
+  background: linear-gradient(transparent 60%, #dcf1f9 0%);
+}
+
+/* タブレット横置きサイズ（1024px）以下の際に適用される設定 */
+@media screen and (max-width:1024px) {
+  .thanks-img-box {
+    width: 210px;
+  }
+  .order-index-btn {
+    font-size: 0.6rem!important;
+    padding: 0.3rem!important;
+  }
+}
+
+/* タブレット縦置きサイズ（768px）以下の際に適用される設定 */
+@media screen and (max-width:768px) {
+  .thanks-img-box {
+    width: 280px;
+  }
+  
+  .tbl-r04 {
+    border: 0;
+    width:100%
+  }
+  .tbl-r04 th{
+    background-color: #bee5eb;
+    display: block;
+    border-right: none;
+  }
+  .tbl-r04 thead {
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+  .tbl-r04 tr {
+    display: block;
+    margin-bottom: .625em;
+    border: 1px solid #bee5eb;
+  }
+  .tbl-r04 td {
+    border-bottom: 1px dotted #bbb;
+    display: block;
+    font-size: 1.2em;
+    text-align: right;
+    position: relative;
+    padding: 1.5em 1em 1.5em 4em;
+    border-right: none;
+  }
+  .tbl-r04 td::before {
+    content: attr(data-label);
+    font-weight: bold;
+    position: absolute;
+    left: 10px;
+    color: #000;
+  }
+  .tbl-r04 td:last-child {
+    border-bottom: 0;
+  }
+  .tbl-r04 td:first-child {
+    border-bottom: 0;
+    text-align: center;
+    background-color: #bee5eb;
+    display: block;
+    border-right: none;
+  }
+  .tbl-r04 tbody th {
+    color: #fff;
+    padding: 1em
+  }
+  .tbl-r04 tr:nth-child(even){
+    background-color: #fff;
+  }
+  
+  .recommend-message {
+    text-align: center;
+  }
+  
+  .index-table-wrap {
+    overflow-x: scroll;
+  }
+  .index-table {
+    width: 100%;
+    border-collapse: collapse;
+    white-space: nowrap;
+  }
+}
+
+/* スマートフォンサイズ（425px）以下の際に適用される設定 */
+@media screen and (max-width:425px) {
+  .table-font-size {
+    font-size: 0.8rem;
+    line-height: 1.0;
+  }
+
+  .table-font-size th,
+  .table-font-size td {
+    padding : 0.3rem;
+  }
+
+  .recommend-message {
+    font-size: 5vw!important;
+  }
+  .order-alert {
+    font-size: 0.8rem;
+  }
+  .thanks-img-box {
+    width: 280px;
+  }
+}

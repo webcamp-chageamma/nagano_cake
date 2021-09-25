@@ -6,7 +6,7 @@ class CreateCommodities < ActiveRecord::Migration[5.2]
       t.text :opinion
       t.integer :non_taxed_price
       t.string :image_id
-      t.integer :sale_status
+      t.integer :sale_status, default: 0
 
       t.timestamps
     end

@@ -16,4 +16,76 @@
  @import "bootstrap";
  @import 'font-awesome-sprockets';
  @import 'font-awesome';
+
+ *{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+ }
  
+ a {
+  color: #538393;
+ }
+
+ .navbar-brand {
+  font-family: "ヒラギノ丸ゴ ProN","Arial", "メイリオ";
+ }
+
+.header {
+ background-color: #24140e;
+}
+
+.container {
+ min-height: 63vw;
+ margin-top: 3vw;
+ margin-bottom: 3vw;
+}
+
+.footer {
+  bottom: 0;
+  width: 100%;
+  height: 70px;
+  background-color: #24140e;
+  margin-bottom: -50px;
+}
+
+.logo {
+  height: 80px;
+  width: 160px;
+}
+
+@media screen and (max-width: 1024px) {
+  .logo {
+   height: 60px;
+   width: 120px;
+  }
+  
+}
+/* タブレット縦置きサイズ（768px）以下の際に適用される設定 */
+@media screen and (max-width: 768px) {
+  .logo {
+   height: 40px;
+   width: 80px;
+  }
+}
+
+@media screen and (max-width: 480px) { 
+ .logo {
+   height: 35px;
+   width: 70px;
+ }
+ 
+ .login-name {
+  font-size: 0.7em;
+ }
+}
+
+@media screen and (max-width: 320px) {
+ .logo {
+   height: 30px;
+   width: 60px;
+ }
+ .login-name {
+  font-size: 0.6em;
+ }
+}

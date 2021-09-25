@@ -1,2 +1,34 @@
-<h1>Admin::Genres#edit</h1>
-<p>Find me in app/views/admin/genres/edit.html.erb</p>
+<div class="container ">
+  <div class="row">
+    <div class="col-xs-6 col-sm-4 col-md-4 text-center">
+      <h5 class="bg-light mb-4  text-center">ジャンル編集</h5>
+      <% if @genre.errors.any? %>
+        <%= @genre.errors.count %>件のエラーが発生しました
+        <% @genre.errors.full_messages.each do |message| %>
+          <%= message %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+  <div class="row mt-4 mb-4">
+    <div class="">
+      <%= form_with url:admin_genre_path, model: @genre, local:true do |f| %>
+        <div class="table-responsive">
+          <table class="table text-nowrap table-borderless" style="width: 30%;">
+            <tbody>
+              <td class="col-xs-4 col-sm-4 col-md-2">
+                <%= f.label :name, "ジャンル名" %>
+              </td>
+              <td class="col-xs-4 col-sm-4 col-md-2">
+                <%= f.text_field :name, size: 15 %>
+              </td>
+              <td class="col-xs-4 col-sm-4 col-md-2">
+                <%= f.submit "変更を保存", class: "btn btn-sm btn-success" %>
+              </td>
+            </tbody>
+          </table>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,2 +1,31 @@
-<h1>Public::Commodities#show</h1>
-<p>Find me in app/views/public/commodities/show.html.erb</p>
+<div class='container'>
+  <div class='row'>
+    <%= render 'layouts/errors', obj: @commodity %>
+    <div class='col-md-5 order-md-2'>
+        <%= attachment_image_tag @commodity,  :image, format: 'jpeg', class: "img-fluid"%>
+    </div>
+    <div class='col-md-5 order-md-3 mb-5'>
+      <div class="commodity_name">
+         <%= @commodity.name %>
+      </div>
+      <div class="col-md-10 commodity_opinion">
+         <%= @commodity.opinion %>
+      </div>
+      <div class="col-md-10  commodity_price">
+        ¥<%= @commodity.add_tax_sales_price.to_s(:delimited) %>
+        <span class="price"> (税込) </span>
+      </div>
+      <div class="col-md-10 col-xs-2 number1"><span class="number2"> <%= flash.now[:alert] %> </span></div >
+      <div class="col-md-10  commodity_quantity">
+        <%= form_with model: @cart_item, url: cart_items_path, local: true do |f| %>
+          <%= f.hidden_field :commodity_id, value: @commodity.id %>
+          <%= f.number_field :quantity, min: 1, max: 100, include_blank: "個数選択"  %>
+          <%= f.submit "カートに入れる", class: "btn btn-success" %>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-md-2 order-md-1">
+      <%= render 'layouts/genre_search', genres: @genres %>
+    </div>
+  </div>
+</div>
